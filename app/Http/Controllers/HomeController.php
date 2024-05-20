@@ -13,7 +13,7 @@ class HomeController extends Controller
     public function index()
     {
         $home1 = home::query()->first();
-        return view("home", compact("home1"));
+        return view("home", compact('home1'));
     }
 
     /**
