@@ -1,4 +1,7 @@
 @extends('components.main')
+@section('title')
+opozex | اوپوزکس
+@endsection
 @section('main')
     <div class="nav-categories-overlay"></div>
     <div class="overlay-search-box"></div>

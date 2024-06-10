@@ -8,7 +8,7 @@
         href="https://www.digikala.com/mag/wp-content/themes/digikalamag/assets/common/img/ms-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="144x144"
         href="https://www.digikala.com/mag/wp-content/themes/digikalamag/assets/common/img/ms-icon-144x144.png">
-    <title>فروشگاه اینترنتی دیجی استور</title>
+    <title>@yield('title')</title>
     <!--    font-->
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/materialdesignicons.css">
