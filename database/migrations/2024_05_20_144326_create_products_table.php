@@ -21,13 +21,17 @@ return new class extends Migration
             $table->integer('bought_count');
             $table->longText('long_description');
             $table->text('short_description');
-            $table->foreignId('color_id')->constrained()->onDelete('CASCADE');
+            $table->foreignId('color_id')->constrained()->onDelete('CASCADE'); // many to one
             $table->integer('hot_price');
-            $table->foreignId('view_id')->constrained()->onDelete('CASCADE');
+            $table->foreignId('view_id')->constrained()->onDelete('CASCADE'); // 
             $table->json("information_json");
             $table->integer("count_product");
             $table->integer("Warranty");
-            $table->foreignId("category_id")->constrained()->onDelete('CASCADE');
+            $table->foreignId("category_id")->constrained()->onDelete('CASCADE'); // many to one
+            $table->foreignId("bought_id")->constrained()->onDelete('CASCADE'); // many to one
+            $table->foreignId("star_id")->constrained()->onDelete('CASCADE'); // ---
+            $table->foreignId("Q_A_id")->constrained()->onDelete('CASCADE'); // hasOne
+
 
             $table->timestamps();
         });
