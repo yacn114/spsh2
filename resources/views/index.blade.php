@@ -1,0 +1,212 @@
+@extends('main.base')
+
+@section('content')
+
+
+    <!-- ============================ Hero Banner  Start================================== -->
+
+    <div class="hero_banner image-cover" style="background:#03B97C;height:600px" data-overlay="2">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9 col-md-10 col-sm-12">
+                    <div class="simple-search-wrap">
+                        <div class="hero_search-2 text-center">
+                            <form method="post">
+                                @csrf
+                                <h1 class="banner_title mb-4 font-2">میتونی دوره هارو سرچ کنی! <br>( اگه هنوز مطمعن نیستی از کجا شروع کنی راهنمایی رو یه سر بزن )</h1>
+                                <div class="input-group simple_search">
+                                    <i class="fa fa-search ico"></i>
+                                    <input type="text"  name="search" class="form-control" placeholder="نام دوره آموزشی...">
+                                    <div class="input-group-append">
+                                        <button class="btn theme-bg" type="submit">جستجو</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================ Hero Banner End ================================== -->
+
+    <!-- ================================ Tag Award ================================ -->
+
+    <!-- ============================ Featured Categories Start ================================== -->
+
+    <div class="clearfix"></div>
+    <!-- ============================ Featured Categories End ================================== -->
+
+    <!-- ============================ Latest Cources Start ================================== -->
+    <hr>
+    <section class="gray" style="background-color:whitesmoke;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7 col-md-8">
+                    <div class="sec-heading center">
+                        <h3 class="font-2">دوره های آموزشی <span style="color:rgb(193, 0, 0)"><i class="fas fa-fire"></i> HOT </span></h3>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+
+                <!-- Single Grid -->
+                {% for peo in products %}
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                    <div class="crs_grid">
+                        <div class="crs_grid_thumb">
+                            <a href="{% url "product:detail" peo.slug %}" class="crs_detail_link">
+                            <img style="height:auto;" src="{{peo.image}}" class="img-fluid rounded" alt="{{peo.name}}" />
+                            </a>
+
+                        </div>
+                        <div class="crs_grid_caption">
+                            <div class="crs_flex">
+                                <div class="crs_fl_first">
+                                    {% for ca in peo.language.all %}
+
+                                    <div class="crs_cates"><span>{{ca}}</span></div>
+
+                                    {% endfor %}
+                                </div>
+                                <div class="crs_fl_last">
+                                    <div class="crs_price"><h2><span class="theme-cl">{% takhfif peo.price peo.pricepercent peo.id %}</span><span class="currency">تومان</span></h2></div>
+                                </div>
+                            </div>
+                            <div class="crs_title"><h4><a href="{% url "product:detail" peo.slug %}" class="crs_title_link">{{peo.name}}</a></h4></div>
+                            <div class="crs_info_detail">
+                                <ul>
+                                    <li><i class="fas fa-level-up-alt"></i><span>{{peo.tutorial_level}}</span></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="crs_grid_foot">
+                            <div class="crs_flex">
+                                <div class="crs_fl_last">
+                                    <div class="foot_list_info">
+                                        <ul class="light">
+                                            <li><div class="elsio_ic"><i class="fa fa-user text-danger"></i></div><div class="elsio_tx">{{peo.student_count}}</div></li>
+                                            <li><div class="elsio_ic"><i class="fa fa-eye text-success"></i></div><div class="elsio_tx">{{peo.view}}</div></li>
+                                            <li><div class="elsio_ic"><i class="fa fa-star text-warning"></i></div><div class="elsio_tx">4.7</div></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-7 col-md-8 mt-2">
+                    <div class="text-center"><a href="{% url "product:all" %}" class="btn btn-md theme-bg-light theme-cl">همه آموزش ها</a></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <hr>
+    <section class="min"  style="background-color:whitesmoke;">
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-lg-7 col-md-8">
+                    <div class="sec-heading center">
+                        <h3 class="font-2" id="category">دسته بندی های آموزشی <span class="theme-cl">منتخب</span></h3>
+                        {% comment %} <p>با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.</p> {% endcomment %}
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row justify-content-center">
+                <!-- Single Category -->
+                {% for cat in lang %}
+
+                <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                    <div class="crs_cate_wrap style_2">
+                        <a href="{% url 'category:category' cat.hashtag %}" class="crs_cate_box">
+                            <div class="crs_cate_icon"><i class="fa fa-code"></i></div>
+                            <div class="crs_cate_caption"><span>{{cat}}</span></div>
+                            {% comment %} <div class="crs_cate_count"><span>22 دوره</span></div> {% endcomment %}
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section>
+    <!-- ============================ articles ================================== -->
+    <hr>
+    <section  style="background-color:whitesmoke;">
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-lg-7 col-md-10 text-center">
+                    <div class="sec-heading center mb-4">
+                        <h3 class="font-2">لیست مقالات <span style="color: brown;">پیشنهادی</span></h3>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="tutor-slide">
+                        {% for blog_item in blog %}
+                        <!-- Single Item -->
+                        <div class="lios_item">
+                            <div class="crs_trt_grid theme-light shadow_none">
+                                <div class="crs_trt_thumb">
+                                    <a href="instructor-detail.html" class="crs_trt_thum_link"><img src="{{blog_item.image}}" class="img-fluid" alt=""></a>
+                                </div>
+                                <div class="crs_trt_caption large"  style="background-color: white;">
+                                    {% for ca in blog_item.category.all %}
+
+                                    <div class="instructor_tag dark"><span>{{ca}}</span></div>
+                                    {% endfor %}
+                                    <div class="instructor_title"><h4><a href="#">{{blog_item}}</a></h4></div>
+                                    {% comment %} <div class="trt_rate_inf">
+                                        <i class="fa fa-star filled"></i>
+                                        <i class="fa fa-star filled"></i>
+                                        <i class="fa fa-star filled"></i>
+                                        <i class="fa fa-star filled"></i>
+                                        <i class="fa fa-star-half filled"></i>
+                                        <span class="alt_rates">(244 نظر ثبت شده)</span>
+                                    </div> {% endcomment %}
+                                    <a class="crs_title_link" tabindex="0">
+                                        {{blog_item.caption|truncatechars:250}}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Item -->
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <hr>
+    <!-- ============================ end articles ================================== -->
+
+
+    <div class="clearfix"></div>
+    <!-- ============================ Work Process End ================================== -->
+
+    <!-- ============================ Our Instructor Start ================================== -->
+
+    <!-- ============================ Our Instructor End ================================== -->
+
+    <!-- ============================ Pricing Table ================================== -->
+
+
+@endsection
