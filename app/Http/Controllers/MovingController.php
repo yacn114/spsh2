@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTransfer_Purchase_historyRequest;
-use App\Http\Requests\UpdateTransfer_Purchase_historyRequest;
-use App\Models\Transfer_Purchase_history;
+use App\Http\Requests\StoreMovingRequest;
+use App\Http\Requests\UpdateMovingRequest;
+use App\Models\Moving;
 
-class TransferPurchaseHistoryController extends Controller
+class MovingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class TransferPurchaseHistoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTransfer_Purchase_historyRequest $request)
+    public function store(StoreMovingRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class TransferPurchaseHistoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Transfer_Purchase_history $transfer_Purchase_history)
+    public function show(Moving $transfer_Purchase_history)
     {
         //
     }
@@ -43,7 +43,7 @@ class TransferPurchaseHistoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Transfer_Purchase_history $transfer_Purchase_history)
+    public function edit(Moving $transfer_Purchase_history)
     {
         //
     }
@@ -51,7 +51,7 @@ class TransferPurchaseHistoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTransfer_Purchase_historyRequest $request, Transfer_Purchase_history $transfer_Purchase_history)
+    public function update(UpdateMovingRequest $request, Moving $transfer_Purchase_history)
     {
         //
     }
@@ -59,7 +59,7 @@ class TransferPurchaseHistoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Transfer_Purchase_history $transfer_Purchase_history)
+    public function destroy(Moving $transfer_Purchase_history)
     {
         //
     }

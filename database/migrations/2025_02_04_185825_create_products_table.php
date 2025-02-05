@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('description');
             $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->integer('student_count')->default(0);
-            $table->string('tutorial_level');
+            $table->enum('tutorial_level',['level1','level2','level3'])->default('level1');
             $table->text('result');
             $table->timestamps();
         });

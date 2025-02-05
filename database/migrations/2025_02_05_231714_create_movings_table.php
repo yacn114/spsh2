@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transfer__purchase_histories', function (Blueprint $table) {
+        Schema::create('movings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->nullable()->constrained();
             $table->unsignedInteger('sender_id')->nullable();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transfer__purchase_histories');
+        Schema::dropIfExists('movings');
     }
 };

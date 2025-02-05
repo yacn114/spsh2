@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateTransfer_Purchase_historyRequest extends FormRequest
+class StoreMovingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

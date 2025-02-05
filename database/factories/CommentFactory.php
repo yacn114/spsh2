@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +18,15 @@ class CommentFactory extends Factory
      */
     public function definition(): array
     {
+
         return [
-            //
+            'product_id' => Product::factory(),
+            'user_id' => User::factory(),
+            'comment' => $this->faker->paragraph(),
+            'status' => $this->faker->randomElement(['open', 'closed']),
+            'rating' => $this->faker->numberBetween(1, 5), // امتیاز بین 1 تا 5
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }
