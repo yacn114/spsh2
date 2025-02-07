@@ -35,51 +35,35 @@
             </div>
             <div class="nav-menus-wrapper">
                 <ul class="nav-menu">
-
-                    <li class="active"><a href="home:home">خانه<span class="submenu-indicator"></span></a></li>
-
-                    <li><a href="#category">دسته بندی های آموزشی<span class="submenu-indicator"></span></a>
+                    <li class="active"><a href="home:home">خانه</a></li>
+                    <li>
+                        <a href="#category">دسته بندی های آموزشی</a>
                         <ul class="nav-dropdown nav-submenu">
-{{--                            {% for categ in category %}--}}
-{{--                            <li><a href="#">{{categ.name}}<span class="submenu-indicator"></span></a>--}}
-{{--                                <ul class="nav-dropdown nav-submenu">--}}
-{{--                                    {% for lan in lang %}--}}
-{{--                                    {% for cat in lan.category.all %}--}}
-{{--                                    {% if cat.name == categ.name %}--}}
-{{--                                    <li><a href="/category/{{lan.hashtag}}">{{lan.nameE}}</a></li>--}}
-{{--                                    {% endif %}--}}
-{{--                                    {% endfor %}--}}
-{{--                                    {% endfor %}--}}
-
-{{--                                </ul>--}}
-{{--                            </li>--}}
-{{--                            {% endfor %}--}}
-
+                            @foreach($parent_categories as $category)
+                                @include('main.menu-category', ['category' => $category])
+                            @endforeach
                         </ul>
                     </li>
                     <li><a href="#">مشاوره رایگان</a></li>
-
-
-
-
                 </ul>
-                <ul class="nav-menu nav-menu-social align-to-left">
-{{--                    {% if request.user.is_authenticated %}--}}
 
-                    <li class="add-listing bg-white"><a href="account:home">داشبورد</a></li>
+                <ul class="nav-menu nav-menu-social align-to-left">
+                    @if(auth()->check())
+
+                    <li class="add-listing bg-white"><a href="{{route('dashboard')}}">داشبورد</a></li>
                     <li class="add-listing bg-white"><a href="account:courses">دوره های شما</a></li>
 
-{{--                    {% else %}--}}
+                    @else
 
                     <li>
-                        <a href="account_login">
+                        <a href="{{route('login')}}">
                             <i class="fas fa-sign-in-alt ml-1 rotate-img"></i><span class="dn-lg">ورود</span>
                         </a>
                     </li>
                     <li class="add-listing bg-white">
                         <a href="account_signup" class="text-white">ثبت نام</a>
                     </li>
-{{--                    {% endif %}--}}
+                    @endif
 
 
 

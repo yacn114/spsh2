@@ -3,7 +3,10 @@
 # todo:
 <ul>
 <li>edit index page</li>
-<li>share variables</li>
+<li>forget password</li>
+<li>middleware auth</li>
+<li>dashboard ...</li>
+<li>have`nt registration</li>
 <li>add permission role (package or manually ?)</li>
 <li>edit moving db</li>
 </ul>
