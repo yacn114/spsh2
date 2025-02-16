@@ -14,7 +14,7 @@
         </div>
     </div>
 </section>
-
+<hr>
 <footer class="light-footer skin-light-footer style-2">
     <div class="footer-middle">
         <div class="container">
@@ -22,7 +22,7 @@
 
                 <div class="col-lg-5 col-md-5">
                     <div class="footer_widget">
-                        <img src="/" class="img-footer small mb-2" style="border-radius: 50%;" alt="opozex-logo" />
+                        <img src="{{$data->logo}}" class="img-footer small mb-2" style="border-radius: 50%;" alt="opozex-logo" />
 
                         <br>
                         <br>
@@ -60,7 +60,7 @@
                             <div class="footer_widget">
                                 <h4 class="widget_title">حساب کاربری</h4>
                                 <ul class="footer-menu">
-                                    <li><a href="account_login">ورود</a></li>
+                                    <li><a href="{{route('login')}}">ورود</a></li>
                                     <li><a href="account_login">مشاوره رایگان<span class="new">جدید</span></a></li>
 
 

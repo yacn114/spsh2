@@ -83,7 +83,7 @@
                         عضو نیستی؟
                     </span>
 
-                    <a href="#" class="txt2 bo1 myfont">
+                    <a href="{{route('signup')}}" class="txt2 bo1 myfont">
                         sign-up
                     </a>
                 </div>

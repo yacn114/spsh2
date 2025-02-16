@@ -1,5 +1,7 @@
 @extends('main.base')
-
+@section('title')
+    {{$data->nameE}} | {{$data->nameF}}
+@endsection
 @section('content')
 
     <div class="hero_banner image-cover" style="background:#03B97C;height:600px" data-overlay="2">
@@ -8,7 +10,7 @@
                 <div class="col-lg-9 col-md-10 col-sm-12">
                     <div class="simple-search-wrap">
                         <div class="hero_search-2 text-center">
-                            <form method="post">
+                            <form method="post" action="{{route('search')}}">
                                 @csrf
                                 <h1 class="banner_title mb-4 font-2">میتونی دوره هارو سرچ کنی! <br>( اگه هنوز مطمعن نیستی از کجا شروع کنی راهنمایی رو یه سر بزن )</h1>
                                 <div class="input-group simple_search">
@@ -31,13 +33,101 @@
             <div class="row justify-content-center">
                 <div class="col-lg-7 col-md-8">
                     <div class="sec-heading center">
-                        <h3 class="font-2">دوره های آموزشی <span style="color:rgb(193, 0, 0)"><i class="fas fa-fire"></i> HOT </span></h3>
+                        <h3 class="font-2">دوره های آموزشی <span style="color:rgb(193, 0, 0)"><i class="fas fa-fire"></i> هیجانی </span></h3>
                     </div>
                 </div>
             </div>
 
+            <div class="row">
+                @foreach($products as $product)
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="crs_grid">
+                        <div class="crs_grid_thumb">
+                            <img src="https://haieng.com/wp-content/uploads/2017/10/test-image-500x500.jpg" class="img-fluid" alt="Course Image">
+                        </div>
+                        <div class="crs_grid_caption">
+                            <div class="crs_flex">
+                                <div class="crs_fl_first">
+                                    <h4 class="crs_title">{{$product->name}}</h4>
+                                </div>
+                                <div class="crs_fl_last">
+                                    <div class="crs_price">
+                                        <h4>
+                                            <span class="theme-cl">{{$product->discount}}</span>
+                                        </h4>
+                                        <h5 style="color:red">{{$product->price}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="crs_info_detail">
+                                <ul>
+                                    <li><i class="fas fa-level-up-alt"></i><span>{{$product->tutorial_level}}</span></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="crs_grid_foot">
+                            <div class="crs_flex">
+                                <div class="crs_fl_last">
+                                    <div class="foot_list_info">
+                                        <ul class="light">
+                                            <li><div class="elsio_ic"><i class="fa fa-user text-danger"></i></div><div class="elsio_tx">
+                                                {{$product->student_count}} دانشجو</div></li>
+                                            <li><div class="elsio_ic"><i class="fa fa-eye text-success"></i></div><div class="elsio_tx">
+                                                {{$product->view}} بازدید</div></li>
+                                            <li><div class="elsio_ic"><i class="fa fa-star text-warning"></i></div><div class="elsio_tx">4.7</div></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                <!-- دو کارت دیگر نیز همین ساختار را داشته باشند -->
+
+            </div>
+
+<hr>
             <div class="row justify-content-center">
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                <div class="col-lg-7 col-md-8 mt-2">
+                    <div class="sec-heading center">
+                        <h3 class="font-2">دوره های آموزشی <span style="color:rgb(193, 0, 0)"><i class="fas fa-fire"></i> HOT </span></h3>
+                    </div>
+                    <div class="crs_grid">
+                        <div class="crs_grid_thumb">
+                            <img src="https://via.placeholder.com/400x250" class="img-fluid" alt="Course Image">
+                        </div>
+                        <div class="crs_grid_caption">
+                            <div class="crs_flex">
+                                <div class="crs_fl_first">
+                                    <h4 class="crs_title">دوره آموزشی تستی</h4>
+                                </div>
+                                <div class="crs_fl_last">
+                                    <div class="crs_price"><h4><span class="theme-cl">$49</span></h4></div>
+                                </div>
+                            </div>
+                            <div class="crs_info_detail">
+                                <ul>
+                                    <li><i class="fa fa-clock"></i><span>10 ساعت</span></li>
+                                    <li><i class="fa fa-video"></i><span>20 ویدیو</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="crs_grid_foot">
+                            <div class="crs_flex">
+                                <div class="crs_fl_last">
+                                    <div class="foot_list_info">
+                                        <ul class="light">
+                                            <li><div class="elsio_ic"><i class="fa fa-user text-danger"></i></div><div class="elsio_tx">100 دانشجو</div></li>
+                                            <li><div class="elsio_ic"><i class="fa fa-eye text-success"></i></div><div class="elsio_tx">500 بازدید</div></li>
+                                            <li><div class="elsio_ic"><i class="fa fa-star text-warning"></i></div><div class="elsio_tx">4.7</div></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="crs_grid">
                         <div class="crs_grid_thumb">
                             <img src="https://via.placeholder.com/400x250" class="img-fluid" alt="Course Image">
@@ -74,11 +164,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row justify-content-center">
-                <div class="col-lg-7 col-md-8 mt-2">
-                </div>
-            </div>
+            <hr>
         </div>
     </section>
 

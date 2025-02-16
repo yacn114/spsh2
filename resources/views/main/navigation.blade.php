@@ -9,26 +9,26 @@
     <div class="container">
         <nav id="navigation" class="navigation navigation-landscape">
             <div class="nav-header">
-                <a class="nav-brand" href="home:home">
-                    <img src="/" id="logo" class="logo" alt="logo" />
+                <a class="nav-brand" href="{{route('home')}}">
+                    <img src="{{$data->logo}}" id="logo" class="logo" alt="logo" />
                 </a>
                 <div class="nav-toggle"></div>
                 <div class="mobile_nav">
                     <ul>
-                        {% if request.user.is_authenticated %}
+                        @if(auth()->check())
                         <li>
-                            <a href="account:home">
-                                <span class="embos_45"><i class="fas fa-sign-in-alt ml-1 rotate-img"></i>داشبورد ()</span>
+                            <a href="{{route('dashboard')}}">
+                                <span class="embos_45"><i class="fas fa-sign-in-alt ml-1 rotate-img"></i>داشبورد <p>({{auth()->user()->name}})</span></p>
                             </a>
                         </li>
 
-                        {% else %}
+                        @else
                         <li>
-                            <a href="account_login">
+                            <a href="{{route('login')}}">
                                 <span class="embos_45"><i class="fas fa-sign-in-alt ml-1 rotate-img"></i>ورود</span>
                             </a>
                         </li>
-                        {% endif %}
+                        @endif
 
                     </ul>
                 </div>
@@ -61,7 +61,7 @@
                         </a>
                     </li>
                     <li class="add-listing bg-white">
-                        <a href="account_signup" class="text-white">ثبت نام</a>
+                        <a href="{{route('signup')}}" class="text-white">ثبت نام</a>
                     </li>
                     @endif
 

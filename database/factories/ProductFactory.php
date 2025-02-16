@@ -18,9 +18,10 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         $name = $this->faker->words(3, true);
-        $discount = $this->faker->randomFloat(2, 0, 500);
-        $price = $this->faker->randomFloat(2, 1000, 10000);
-        $discountPercent = ($discount > 0) ? round(($discount / $price) * 100, 2) : 0;
+        $discount = 0;
+        //$this->faker->numberBetween( 0, 500);
+        $price = $this->faker->numberBetween( 1000, 10000);
+        $discountPercent = $this->faker->numberBetween(0,100);
 
         return [
             'name' => ucfirst($name),
