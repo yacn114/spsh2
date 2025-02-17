@@ -1,7 +1,7 @@
 
 
 <hr>
-<section class="bg-cover" style="background:whitesmoke url('assets/img/call-bg.png')no-repeat;">
+<section class="bg-cover" style="background:whitesmoke url('/assets/img/call-bg.png')no-repeat;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-12 col-sm-12">

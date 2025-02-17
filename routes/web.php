@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{HomeController,ProfileController,SearchController};
+use App\Http\Controllers\{HomeController,ProfileController,SearchController,FilterController};
 use App\Http\Controllers\Auth\{AuthenticatedSessionController,RegisteredUserController};
 use Illuminate\Support\Facades\Route;
 
@@ -14,5 +14,10 @@ Route::post('/signup', [RegisteredUserController::class, 'store'])->name('signup
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login-store')->middleware(['guest']);
 Route::get('/dashboard', [ProfileController::class, 'edit'])->name('dashboard')->middleware(['auth']);
 Route::post('search/', [SearchController::class,'store'])->name('search');
+Route::get('search/', function(){
+    return redirect(route('home2'));
+});
+
+Route::get('filter/', [FilterController::class,'index'])->name('filter'); // not writed
 Route::get('product/{slug}', [])->name('single'); // not writed
 Route::get('category/{slug}', [])->name('category'); // not writed

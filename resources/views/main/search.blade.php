@@ -2,14 +2,14 @@
 @section('content')
 
 
-<section class="gray" style="background-color:whitesmoke;">
+<section class="gray" style="background-color:#00563B;">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="simple-search-wrap text-right">
 					<div class="hero_search-2">
 						<form method="post" action="{{route('search')}}">
-						
-							<h4 class="font-lg mb-4">یادت نرفته که قبلش میتونی از راهنمایی کمک بگیری ؟ باهاش میتونی دوره مناسب خودتو پیدا کنی :)</h4>
+							<br>						
+							<h4 class="font-lg mb-4" style="color: white;">یادت نرفته که قبلش میتونی از راهنمایی کمک بگیری ؟ باهاش میتونی دوره مناسب خودتو پیدا کنی :)</h4>
 							@csrf
 						<div class="input-group simple_search">
 							<i class="fa fa-search ico"></i>
@@ -26,7 +26,7 @@
 				<div class="sec-heading center">
 				<br>
 				<br>
-					<h3 class="font-2">نتایج جستجوی : {{$products->count()}} </h3>
+					<h3 class="font-2" style="color:white">نتایج جستجوی : {{$products->count()}} </h3>
 				</div>
 			</div>
 		</div>
@@ -98,7 +98,7 @@
 		
 		<div class="row justify-content-center">
 			<div class="col-lg-7 col-md-8 mt-2">
-				<div class="text-center"><a href="{% url 'product:all' %}" class="btn btn-md theme-bg-light theme-cl">همه آموزش ها</a></div>
+				<div class="text-center"><a href="{{route('filter')}}" class="btn btn-md theme-bg-light theme-cl">صفحه فیلتر</a></div>
 			</div>
 		</div>
 		

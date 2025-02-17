@@ -32,7 +32,7 @@
     <!-- Top header  -->
     <!-- ============================================================== -->
     <!-- Start Navigation -->
-    @include('main.navigation')
+    @include('layout.navigation')
     <!-- End Navigation -->
     <div class="clearfix"></div>
     <!-- ============================================================== -->

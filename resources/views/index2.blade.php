@@ -7,7 +7,7 @@
 
 
 <!-- ============================ Hero Banner  Start================================== -->
-<div class="hero_banner image-cover" style="background:#03b97c url(assets/img/banner-3.jpg) no-repeat;" data-overlay="5">
+<div class="hero_banner image-cover" style="background:#00563B url(assets/img/banner-3.jpg) no-repeat;" data-overlay="5">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-xl-6 col-lg-7 col-md-8 col-sm-12">

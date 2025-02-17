@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-    <div class="hero_banner image-cover" style="background:#03B97C;height:600px" data-overlay="2">
+    <div class="hero_banner image-cover" style="background:#00563B;height:600px" data-overlay="2">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-9 col-md-10 col-sm-12">
