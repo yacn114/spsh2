@@ -12,12 +12,14 @@ Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('l
 Route::get('/signup', [RegisteredUserController::class, 'create'])->name('signup')->middleware(['guest']);
 Route::post('/signup', [RegisteredUserController::class, 'store'])->name('signup-store')->middleware(['guest']);
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login-store')->middleware(['guest']);
-Route::get('/dashboard', [ProfileController::class, 'edit'])->name('dashboard')->middleware(['auth']);
 Route::post('search/', [SearchController::class,'store'])->name('search');
 Route::get('search/', function(){
     return redirect(route('home2'));
 });
 
+Route::get('/dashboard', [ProfileController::class, 'edit'])->name('dashboard')->middleware(['auth']); // not writed
 Route::get('filter/', [FilterController::class,'index'])->name('filter'); // not writed
+Route::get('cat/{slug}', [])->name('cat'); // not writed
 Route::get('product/{slug}', [])->name('single'); // not writed
+Route::get('book/{slug}', [])->name('book'); // not writed
 Route::get('category/{slug}', [])->name('category'); // not writed

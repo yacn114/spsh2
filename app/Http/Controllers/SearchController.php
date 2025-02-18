@@ -17,6 +17,6 @@ class SearchController extends Controller
                   ->orWhere('description', 'LIKE', "%{$searchTerm}%");
         })->get();
         
-        return view('main.search', compact('products'));
+        return view('main.search', compact(['products','searchTerm']));
     }
 }

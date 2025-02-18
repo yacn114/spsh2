@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="yacn_1414" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SkillUp - قالب HTML دوره آنلاین و آموزش</title>
+    <title>@yield('title')</title>
 
     <!-- Custom CSS -->
     <link href="/assets/css/styles.css" rel="stylesheet">

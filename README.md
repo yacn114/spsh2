@@ -2,12 +2,8 @@
 ## این پروژه ورژن لاراول پروژه  [اسپش](https://github.com/yacn114/spsh) است که آن پروژه خود با جنگو نوشته شده بود
 # todo:
 <ul>
-<li>edit index 2</li>
-<li>edit footer header index 2</li>
 <li>add single and category</li>
-<li>edit index page</li>
 <li>forget password</li>
-<li>middleware auth</li>
 <li>dashboard ...</li>
 <li>have`nt registration</li>
 <li>add permission role (package or manually ?)</li>

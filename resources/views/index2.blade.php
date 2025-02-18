@@ -84,133 +84,25 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
+        @foreach ($categoryCategory as $cat_cat)
+        
             <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="edu_cat_2 cat-1">
+                <div class="edu_cat_2 cat-{{$loop->index}}">
                     <div class="edu_cat_icons">
-                        <a class="pic-main" href="#"><img src="assets/img/content.png" class="img-fluid" alt="" /></a>
+                        <a class="pic-main" href="{{route('cat',$cat_cat->name)}}"><img src="{{$cat_cat->image}}" class="img-fluid" alt="{{$cat_cat->name}}" /></a>
                     </div>
                     <div class="edu_cat_data">
-                        <h4 class="title"><a href="#">مهندسی نرم افزار</a></h4>
+                        <h4 class="title"><a href="{{route('cat',$cat_cat->name)}}">{{$cat_cat->name}}</a></h4>
                         <ul class="meta">
-                            <li class="video"><i class="ti-video-clapper"></i>23 دوره</li>
+                            <li class="video"><i class="ti-video-clapper"></i>{{$cat_cat->product_count}} دوره</li>
                         </ul>
                     </div>
                 </div>
             </div>
+                @endforeach
 
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="edu_cat_2 cat-2">
-                    <div class="edu_cat_icons">
-                        <a class="pic-main" href="#"><img src="assets/img/briefcase.png" class="img-fluid" alt="" /></a>
-                    </div>
-                    <div class="edu_cat_data">
-                        <h4 class="title"><a href="#">استارت آپ</a></h4>
-                        <ul class="meta">
-                            <li class="video"><i class="ti-video-clapper"></i>58 دوره</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="edu_cat_2 cat-3">
-                    <div class="edu_cat_icons">
-                        <a class="pic-main" href="#"><img src="assets/img/career.png" class="img-fluid" alt="" /></a>
-                    </div>
-                    <div class="edu_cat_data">
-                        <h4 class="title"><a href="#">مالی و حسابداری</a></h4>
-                        <ul class="meta">
-                            <li class="video"><i class="ti-video-clapper"></i>74 دوره</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="edu_cat_2 cat-4">
-                    <div class="edu_cat_icons">
-                        <a class="pic-main" href="#"><img src="assets/img/python.png" class="img-fluid" alt="" /></a>
-                    </div>
-                    <div class="edu_cat_data">
-                        <h4 class="title"><a href="#">فناوری و اطلاعات</a></h4>
-                        <ul class="meta">
-                            <li class="video"><i class="ti-video-clapper"></i>65 دوره</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="edu_cat_2 cat-10">
-                    <div class="edu_cat_icons">
-                        <a class="pic-main" href="#"><img src="assets/img/designer.png" class="img-fluid" alt="" /></a>
-                    </div>
-                    <div class="edu_cat_data">
-                        <h4 class="title"><a href="#">طراحی و گرافیک</a></h4>
-                        <ul class="meta">
-                            <li class="video"><i class="ti-video-clapper"></i>43 دوره</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="edu_cat_2 cat-6">
-                    <div class="edu_cat_icons">
-                        <a class="pic-main" href="#"><img src="assets/img/speaker.png" class="img-fluid" alt="" /></a>
-                    </div>
-                    <div class="edu_cat_data">
-                        <h4 class="title"><a href="#">دیجیتال مارکتنیگ</a></h4>
-                        <ul class="meta">
-                            <li class="video"><i class="ti-video-clapper"></i>82 دوره</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="edu_cat_2 cat-7">
-                    <div class="edu_cat_icons">
-                        <a class="pic-main" href="#"><img src="assets/img/photo.png" class="img-fluid" alt="" /></a>
-                    </div>
-                    <div class="edu_cat_data">
-                        <h4 class="title"><a href="#">هنر</a></h4>
-                        <ul class="meta">
-                            <li class="video"><i class="ti-video-clapper"></i>25 دوره</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="edu_cat_2 cat-8">
-                    <div class="edu_cat_icons">
-                        <a class="pic-main" href="#"><img src="assets/img/yoga.png" class="img-fluid" alt="" /></a>
-                    </div>
-                    <div class="edu_cat_data">
-                        <h4 class="title"><a href="#">علوم انسانی</a></h4>
-                        <ul class="meta">
-                            <li class="video"><i class="ti-video-clapper"></i>43 دوره</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="edu_cat_2 cat-9">
-                    <div class="edu_cat_icons">
-                        <a class="pic-main" href="#"><img src="assets/img/health.png" class="img-fluid" alt="" /></a>
-                    </div>
-                    <div class="edu_cat_data">
-                        <h4 class="title"><a href="#">سبک زندگی</a></h4>
-                        <ul class="meta">
-                            <li class="video"><i class="ti-video-clapper"></i>38 دوره</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+          
         </div>
 
     </div>
@@ -279,12 +171,12 @@
 <!-- ============================ How It Works End ================================== -->
 
 <!-- ============================ Latest Cources Start ================================== -->
-<section class="min">
+<section class="min" style="background-color: whitesmoke">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-7 col-md-8">
                 <div class="sec-heading center">
-                    <h3 class="font-2">جدیدترین دوره های <span class="theme-cl">رایگان</span></h3>
+                    <h3 class="font-2">جدیدترین دوره های <span class="theme-cl">ما</span></h3>
                     <p>با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.</p>
                 </div>
             </div>
@@ -293,269 +185,14 @@
         <div class="row justify-content-center">
 
             <!-- Single Grid -->
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                <div class="crs_grid">
-                    <div class="crs_grid_thumb">
-                        <a href="course-detail.html" class="crs_detail_link">
-                            <img src="assets/img/cr-3.jpg" class="img-fluid rounded" alt="" />
-                        </a>
-                        <div class="crs_video_ico">
-                            <i class="fa fa-play"></i>
-                        </div>
-                        <div class="crs_locked_ico">
-                            <i class="fa fa-lock"></i>
-                        </div>
-                    </div>
-                    <div class="crs_grid_caption">
-                        <div class="crs_tutor_thumb overl_top"><a href="instructor-detail.html"><img src="assets/img/team-5.jpg" class="img-fluid circle" alt="" /></a></div>
-                        <div class="crs_cates cl_1"><span>برنامه نویسی</span></div>
-                        <div class="crs_title"><h4><a href="course-detail.html" class="crs_title_link">آموزش ساخت فروشگاه دیجی استایل با لاراول</a></h4></div>
-                        <div class="crs_info_detail">
-                            <ul>
-                                <li><i class="fa fa-video"></i><span>24 ویدئو</span></li>
-                                <li><i class="fa fa-user"></i><span>10 کاربر</span></li>
-                                <li><i class="fa fa-eye"></i><span>92k بازدید</span></li>
-                            </ul>
-                        </div>
-                        <div class="preview_crs_info">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width:50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="crs_grid_foot">
-                        <div class="crs_flex">
-                            <div class="crs_fl_first">
-                                <div class="crs_price"><h2><span class="theme-cl">199</span><span class="currency">تومان</span></h2></div>
-                            </div>
-                            <div class="crs_fl_last">
-                                <div class="crs_linkview"><a href="course-detail.html" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Single Grid -->
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                <div class="crs_grid">
-                    <div class="crs_grid_thumb">
-                        <a href="course-detail.html" class="crs_detail_link">
-                            <img src="assets/img/cr-4.jpg" class="img-fluid rounded" alt="" />
-                        </a>
-                        <div class="crs_video_ico">
-                            <i class="fa fa-play"></i>
-                        </div>
-                        <div class="crs_locked_ico">
-                            <i class="fa fa-lock"></i>
-                        </div>
-                    </div>
-                    <div class="crs_grid_caption">
-                        <div class="crs_tutor_thumb overl_top"><a href="instructor-detail.html"><img src="assets/img/team-5.jpg" class="img-fluid circle" alt="" /></a></div>
-                        <div class="crs_cates cl_2"><span>پروژه محور</span></div>
-                        <div class="crs_title"><h4><a href="course-detail.html" class="crs_title_link">آموزش ASP.Net - ساخت سایت شخصی</a></h4></div>
-                        <div class="crs_info_detail">
-                            <ul>
-                                <li><i class="fa fa-video"></i><span>24 ویدئو</span></li>
-                                <li><i class="fa fa-user"></i><span>10 کاربر</span></li>
-                                <li><i class="fa fa-eye"></i><span>92k بازدید</span></li>
-                            </ul>
-                        </div>
-                        <div class="preview_crs_info">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width:80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="crs_grid_foot">
-                        <div class="crs_flex">
-                            <div class="crs_fl_first">
-                                <div class="crs_price"><h2><span class="theme-cl">139</span><span class="currency">تومان</span></h2></div>
-                            </div>
-                            <div class="crs_fl_last">
-                                <div class="crs_linkview"><a href="course-detail.html" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Single Grid -->
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                <div class="crs_grid">
-                    <div class="crs_grid_thumb">
-                        <a href="course-detail.html" class="crs_detail_link">
-                            <img src="assets/img/cr-5.jpg" class="img-fluid rounded" alt="" />
-                        </a>
-                        <div class="crs_video_ico">
-                            <i class="fa fa-play"></i>
-                        </div>
-                        <div class="crs_locked_ico">
-                            <i class="fa fa-lock"></i>
-                        </div>
-                    </div>
-                    <div class="crs_grid_caption">
-                        <div class="crs_tutor_thumb overl_top"><a href="instructor-detail.html"><img src="assets/img/team-5.jpg" class="img-fluid circle" alt="" /></a></div>
-                        <div class="crs_cates cl_3"><span>مالی</span></div>
-                        <div class="crs_title"><h4><a href="course-detail.html" class="crs_title_link">دوره حضوری عالی پرورش مدیر مالی</a></h4></div>
-                        <div class="crs_info_detail">
-                            <ul>
-                                <li><i class="fa fa-video"></i><span>24 ویدئو</span></li>
-                                <li><i class="fa fa-user"></i><span>10 کاربر</span></li>
-                                <li><i class="fa fa-eye"></i><span>92k بازدید</span></li>
-                            </ul>
-                        </div>
-                        <div class="preview_crs_info">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width:30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="crs_grid_foot">
-                        <div class="crs_flex">
-                            <div class="crs_fl_first">
-                                <div class="crs_price"><h2><span class="theme-cl">79</span><span class="currency">تومان</span></h2></div>
-                            </div>
-                            <div class="crs_fl_last">
-                                <div class="crs_linkview"><a href="course-detail.html" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="row justify-content-center">
+                @foreach ($products_new as $product)
+                    <x-product-card :product="$product" />
+                @endforeach
             </div>
-
-            <!-- Single Grid -->
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                <div class="crs_grid">
-                    <div class="crs_grid_thumb">
-                        <a href="course-detail.html" class="crs_detail_link">
-                            <img src="assets/img/cr-6.jpg" class="img-fluid rounded" alt="" />
-                        </a>
-                        <div class="crs_video_ico">
-                            <i class="fa fa-play"></i>
-                        </div>
-                        <div class="crs_locked_ico">
-                            <i class="fa fa-lock"></i>
-                        </div>
-                    </div>
-                    <div class="crs_grid_caption">
-                        <div class="crs_tutor_thumb overl_top"><a href="instructor-detail.html"><img src="assets/img/team-5.jpg" class="img-fluid circle" alt="" /></a></div>
-                        <div class="crs_cates cl_4"><span>گرافیک</span></div>
-                        <div class="crs_title"><h4><a href="course-detail.html" class="crs_title_link">آموزش پریمیر - تدوین و میکس ویدئو با Premier</a></h4></div>
-                        <div class="crs_info_detail">
-                            <ul>
-                                <li><i class="fa fa-video"></i><span>24 ویدئو</span></li>
-                                <li><i class="fa fa-user"></i><span>10 کاربر</span></li>
-                                <li><i class="fa fa-eye"></i><span>92k بازدید</span></li>
-                            </ul>
-                        </div>
-                        <div class="preview_crs_info">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width:70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="crs_grid_foot">
-                        <div class="crs_flex">
-                            <div class="crs_fl_first">
-                                <div class="crs_price"><h2><span class="theme-cl">129</span><span class="currency">تومان</span></h2></div>
-                            </div>
-                            <div class="crs_fl_last">
-                                <div class="crs_linkview"><a href="course-detail.html" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Grid -->
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                <div class="crs_grid">
-                    <div class="crs_grid_thumb">
-                        <a href="course-detail.html" class="crs_detail_link">
-                            <img src="assets/img/cr-7.jpg" class="img-fluid rounded" alt="" />
-                        </a>
-                        <div class="crs_video_ico">
-                            <i class="fa fa-play"></i>
-                        </div>
-                        <div class="crs_locked_ico">
-                            <i class="fa fa-lock"></i>
-                        </div>
-                    </div>
-                    <div class="crs_grid_caption">
-                        <div class="crs_tutor_thumb overl_top"><a href="instructor-detail.html"><img src="assets/img/team-5.jpg" class="img-fluid circle" alt="" /></a></div>
-                        <div class="crs_cates cl_5"><span>نرم افزار</span></div>
-                        <div class="crs_title"><h4><a href="course-detail.html" class="crs_title_link">آموزش برنامه نویسی پایتون Python - مقدماتی</a></h4></div>
-                        <div class="crs_info_detail">
-                            <ul>
-                                <li><i class="fa fa-video"></i><span>24 ویدئو</span></li>
-                                <li><i class="fa fa-user"></i><span>10 کاربر</span></li>
-                                <li><i class="fa fa-eye"></i><span>92k بازدید</span></li>
-                            </ul>
-                        </div>
-                        <div class="preview_crs_info">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width:45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="crs_grid_foot">
-                        <div class="crs_flex">
-                            <div class="crs_fl_first">
-                                <div class="crs_price"><h2><span class="theme-cl">99</span><span class="currency">تومان</span></h2></div>
-                            </div>
-                            <div class="crs_fl_last">
-                                <div class="crs_linkview"><a href="course-detail.html" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Grid -->
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                <div class="crs_grid">
-                    <div class="crs_grid_thumb">
-                        <a href="course-detail.html" class="crs_detail_link">
-                            <img src="assets/img/cr-8.jpg" class="img-fluid rounded" alt="" />
-                        </a>
-                        <div class="crs_video_ico">
-                            <i class="fa fa-play"></i>
-                        </div>
-                        <div class="crs_locked_ico">
-                            <i class="fa fa-lock"></i>
-                        </div>
-                    </div>
-                    <div class="crs_grid_caption">
-                        <div class="crs_tutor_thumb overl_top"><a href="instructor-detail.html"><img src="assets/img/team-5.jpg" class="img-fluid circle" alt="" /></a></div>
-                        <div class="crs_cates cl_1"><span>علوم ریاضی</span></div>
-                        <div class="crs_title"><h4><a href="course-detail.html" class="crs_title_link">آموزش بهینه سازی سبد سهام در پایتون </a></h4></div>
-                        <div class="crs_info_detail">
-                            <ul>
-                                <li><i class="fa fa-video"></i><span>24 ویدئو</span></li>
-                                <li><i class="fa fa-user"></i><span>10 کاربر</span></li>
-                                <li><i class="fa fa-eye"></i><span>92k بازدید</span></li>
-                            </ul>
-                        </div>
-                        <div class="preview_crs_info">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width:55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="crs_grid_foot">
-                        <div class="crs_flex">
-                            <div class="crs_fl_first">
-                                <div class="crs_price"><h2><span class="theme-cl">149</span><span class="currency">تومان</span></h2></div>
-                            </div>
-                            <div class="crs_fl_last">
-                                <div class="crs_linkview"><a href="course-detail.html" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            
         </div>
 
     </div>
@@ -579,141 +216,36 @@
             <div class="col-xl-12 col-lg-12 col-sm-12">
 
                 <div class="reviews-slide space">
-
-                    <!-- Single Item -->
-                    <div class="single_items lios_item">
-                        <div class="_testimonial_wrios shadow_none">
-                            <div class="_testimonial_flex">
-                                <div class="_testimonial_flex_first">
-                                    <div class="_tsl_flex_thumb">
-                                        <img src="assets/img/user-1.jpg" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="_tsl_flex_capst">
-                                        <h5>کیوان مختاری</h5>
-                                        <div class="_ovr_posts"><span>مدیر عامل</span></div>
-                                        <div class="_ovr_rates"><span><i class="fa fa-star"></i></span>4.7</div>
-                                    </div>
-                                </div>
-                                <div class="_testimonial_flex_first_last">
-                                    <div class="_tsl_flex_thumb">
-                                        <img src="assets/img/c-1.png" class="img-fluid" alt="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="facts-detail">
-                                <p>زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Item -->
-                    <div class="single_items lios_item">
-                        <div class="_testimonial_wrios shadow_none">
-                            <div class="_testimonial_flex">
-                                <div class="_testimonial_flex_first">
-                                    <div class="_tsl_flex_thumb">
-                                        <img src="assets/img/user-2.jpg" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="_tsl_flex_capst">
-                                        <h5>الهام نجفی</h5>
-                                        <div class="_ovr_posts"><span>مدیر عامل اپل</span></div>
-                                        <div class="_ovr_rates"><span><i class="fa fa-star"></i></span>4.5</div>
-                                    </div>
-                                </div>
-                                <div class="_testimonial_flex_first_last">
-                                    <div class="_tsl_flex_thumb">
-                                        <img src="assets/img/c-2.png" class="img-fluid" alt="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="facts-detail">
-                                <p>زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Item -->
-                    <div class="single_items lios_item">
-                        <div class="_testimonial_wrios shadow_none">
-                            <div class="_testimonial_flex">
-                                <div class="_testimonial_flex_first">
-                                    <div class="_tsl_flex_thumb">
-                                        <img src="assets/img/user-3.jpg" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="_tsl_flex_capst">
-                                        <h5>سعید مرادی</h5>
-                                        <div class="_ovr_posts"><span>موسس گوگل</span></div>
-                                        <div class="_ovr_rates"><span><i class="fa fa-star"></i></span>4.9</div>
-                                    </div>
-                                </div>
-                                <div class="_testimonial_flex_first_last">
-                                    <div class="_tsl_flex_thumb">
-                                        <img src="assets/img/c-3.png" class="img-fluid" alt="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="facts-detail">
-                                <p>زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Item -->
-                    <div class="single_items lios_item">
-                        <div class="_testimonial_wrios shadow_none">
-                            <div class="_testimonial_flex">
-                                <div class="_testimonial_flex_first">
-                                    <div class="_tsl_flex_thumb">
-                                        <img src="assets/img/user-4.jpg" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="_tsl_flex_capst">
-                                        <h5>زهرا حسینی</h5>
-                                        <div class="_ovr_posts"><span>مدیر لینکدین</span></div>
-                                        <div class="_ovr_rates"><span><i class="fa fa-star"></i></span>4.7</div>
-                                    </div>
-                                </div>
-                                <div class="_testimonial_flex_first_last">
-                                    <div class="_tsl_flex_thumb">
-                                        <img src="assets/img/c-4.png" class="img-fluid" alt="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="facts-detail">
-                                <p>زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Item -->
-                    <div class="single_items lios_item">
-                        <div class="_testimonial_wrios shadow_none">
-                            <div class="_testimonial_flex">
-                                <div class="_testimonial_flex_first">
-                                    <div class="_tsl_flex_thumb">
-                                        <img src="assets/img/user-5.jpg" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="_tsl_flex_capst">
-                                        <h5>مسعود شریعتی</h5>
-                                        <div class="_ovr_posts"><span>مدیر عامل</span></div>
-                                        <div class="_ovr_rates"><span><i class="fa fa-star"></i></span>4.7</div>
-                                    </div>
-                                </div>
-                                <div class="_testimonial_flex_first_last">
-                                    <div class="_tsl_flex_thumb">
-                                        <img src="assets/img/c-5.png" class="img-fluid" alt="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="facts-detail">
-                                <p>زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
-                            </div>
-                        </div>
-                    </div>
+@foreach ($last_comments as $lComment)
+    
+<!-- Single Item -->
+<div class="single_items lios_item">
+    <div class="_testimonial_wrios shadow_none">
+        <div class="_testimonial_flex">
+            <div class="_testimonial_flex_first">
+                <div class="_tsl_flex_thumb">
+                    <img src="assets/img/user-1.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="_tsl_flex_capst">
+                    <h5>{{$lComment->users->name}}</h5>
+                    
+                    <div class="_ovr_posts"><span><a href="{{route('single',$lComment->products->slug)}}">{{$lComment->products->name}}</a></span></div>
+                    <div class="_ovr_rates"><span><i class="fa fa-star"></i></span>{{$lComment->rating}}</div>
+                </div>
+            </div>
+            <div class="_testimonial_flex_first_last">
+                <div class="_tsl_flex_thumb">
+                    <img src="assets/img/c-1.png" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+        
+        <div class="facts-detail">
+            <p>{{$lComment->comment}}</p>
+        </div>
+    </div>
+</div>
+@endforeach
 
                 </div>
 
@@ -731,7 +263,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-7 col-md-8">
                 <div class="sec-heading center">
-                    <h3 class="font-2">آخرین اخبار و <span class="theme-cl">مقالات</span></h3>
+                    <h3 class="font-2">آخرین اخبار و <span class="theme-cl">مقالات (بزودی...)</span></h3>
                     <p>با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.</p>
                 </div>
             </div>

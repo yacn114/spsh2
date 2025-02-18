@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\categoryCategory;
+use App\Models\Comment;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -18,7 +20,10 @@ class HomeController extends Controller
     }
 
     public function index2(){
-        return view('index2');
+        $products_new = Product::first()->take(6)->get();
+        $category_Category = categoryCategory::all();
+        $last_Comment = Comment::where('status','=','open')->latest()->take(6)->get();
+        return view('index2',['products_new'=>$products_new,'categoryCategory'=>$category_Category,'last_comments'=>$last_Comment]);
     }
 }
 
