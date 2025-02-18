@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use App\Models\Comment;
+use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -13,7 +15,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        dd(Comment::all());
     }
 
     /**
@@ -27,9 +29,17 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCommentRequest $request)
+    public function store(StoreCommentRequest $request,Product $product)
     {
-        //
+        
+        $comment = Comment::create([
+            'comment'=>$request->validated("comment"),
+            "user_id"=>Auth::user()->id,
+            'product_id'=>$product->id,
+        ]);
+        
+        return redirect()->back()->with('success', 'عملیات با موفقیت انجام شد!');
+
     }
 
     /**

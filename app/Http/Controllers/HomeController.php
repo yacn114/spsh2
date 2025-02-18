@@ -11,12 +11,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $products = Product::where('discount', '>', 0)
-            ->orderByRaw('(price - discount) DESC')
+        $product_discount = Product::where('discount', '>', 1)
+            ->orderByRaw('(price - discount) DESC')->take(6)
             ->get();
-        $product = Product::where('discount_percent', '>' ,0)->orderBy('discount_percent', 'desc')->get();
+        $productـdiscount_percent = Product::where('discount_percent', '>' ,0)->orderBy('discount_percent', 'desc')->take(6)->get();
+        $category_Category = categoryCategory::all();
 
-        return view('index',['products' => $products,'product'=>$product]);
+        return view('index',['product_discount' => $product_discount,'productـdiscount_percent'=>$productـdiscount_percent,'category_Category'=>$category_Category]);
     }
 
     public function index2(){

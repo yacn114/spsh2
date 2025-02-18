@@ -32,24 +32,24 @@
                 <hr>
                 <div>
                     <div class="d-flex justify-content-between" >
-                        <span>قیمت بدون تخفیف</span><span>{{ number_format($product->price) }} تومان</span>
+                        <span>قیمت بدون تخفیف :</span><span>{{ number_format($product->price) }} تومان</span>
                     </div>
 
                     @if ($product->discount != 0)
-                        <div class="d-flex justify-content-between" ><span>قیمت هیجانی</span><span>{{ number_format($product->discount) }}</span></div>
+                        <div class="d-flex justify-content-between" ><span>قیمت هیجانی :</span><span>{{ number_format($product->discount) }}</span></div>
                     @endif
 
                     @if ($product->discount_percent != 0)
-                        <div class="d-flex justify-content-between" ><span>درصد تخفیف</span><span>{{ $product->discount_percent }}%</span></div>
+                        <div class="d-flex justify-content-between" ><span>درصد تخفیف :</span><span>{{ $product->discount_percent }}%</span></div>
                     @endif
+                    <hr>
                 </div>
-                <hr>
-                <div class="d-flex justify-content-between total font-weight-bold" style="color: chocolate">
-                    <span>قیمت تمام شده</span><h4>{{ $product->discount_action() }}</h4>
+                <div class="d-flex justify-content-between total font-weight-bold" style="color: chocolate;">
+                    <span>قیمت تمام شده</span><h4>{{ $product->discount_action() }} تومان </h4>
                 </div>
             </div>
         </div>
-        <div class="crs_grid_foot mt-2">
+        <div class="crs_grid_foot mt-5">
             <div class="crs_flex">
                 <div class="crs_fl_last">
                     <div class="foot_list_info">
