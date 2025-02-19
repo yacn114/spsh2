@@ -48,14 +48,22 @@
 
                 <ul class="nav-menu nav-menu-social align-to-left">
 
+                    @if(auth()->check())
+
+                    <li class="add-listing bg-white"><a href="{{route('dashboard')}}">داشبورد</a></li>
+                    <li class="add-listing bg-white"><a href="account:courses">دوره های شما</a></li>
+
+                    @else
+
                     <li>
-                        <a href="{{route('login')}}" class="alio_green">
+                        <a href="{{route('login')}}">
                             <i class="fas fa-sign-in-alt ml-1 rotate-img"></i><span class="dn-lg">ورود</span>
                         </a>
                     </li>
-                    <li class="add-listing theme-bg">
+                    <li class="add-listing bg-white">
                         <a href="{{route('signup')}}" class="text-white">ثبت نام</a>
                     </li>
+                    @endif
                 </ul>
             </div>
         </nav>

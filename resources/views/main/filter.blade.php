@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fa">
+	
+<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="Themezhub" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>دسته بندی - {{$category->name}}</title>
+
+        <!-- Custom CSS -->
+        <link type="text/css" href="{% static 'assets/css/styles.css' %}" rel="stylesheet">
+		
+    </head>
+	
+    <body dir="rtl">
+
+        <!-- ============================================================== -->
+        <!-- Main wrapper - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <div id="main-wrapper">
+		
+            <!-- ============================================================== -->
+            <!-- Top header  -->
+            <!-- ============================================================== -->
+            <!-- Start Navigation -->
+     {% include "main/navigation.html" %}
+			<!-- End Navigation -->
+			<div class="clearfix"></div>
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+			
+			<!-- ============================ Page Title Start================================== -->
+			<section class="page-title">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 col-md-12">
+							
+							<div class="breadcrumbs-wrap">
+								<h1 class="breadcrumb-title font-2">دسته بندی - {{inp}}</h1>
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb p-0 bg-white">
+										<li class="breadcrumb-item"><a href="{% url 'home:home' %}">خانه</a></li>
+										<li class="breadcrumb-item active theme-cl" aria-current="page">{{inp}}</li>
+									</ol>
+								</nav>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- ============================ Page Title End ================================== -->
+			
+			<!-- ============================ All Cources ================================== -->
+			<section class="gray" style="background-color:whitesmoke;">
+				<div class="container">
+					<div class="row">
+					
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+							<div class="page-sidebar p-0">
+								<a class="filter_links" data-toggle="collapse" href="#fltbox" role="button" aria-expanded="false" aria-controls="fltbox">فیلتر پیشرفته<i class="fa fa-sliders-h mr-2"></i></a>							
+								<form method="post" >
+								<div class="collapse" id="fltbox">
+									<!-- Find New Property -->
+									<div class="sidebar-widgets p-4">
+										
+										<div class="form-group">
+											<div class="input-with-icon">
+
+												{% render_field form.form.title class="form-control" placeholder="نام دوره" %}
+												<i class="ti-search"></i>
+											</div>
+										</div>
+										
+
+										
+										
+										
+										<div class="form-group">
+											<h6>سطح مهارت</h6>
+											<ul class="no-ul-list mb-3">
+												{{form.form.tutorial_level|add_class:"form-control"}}
+
+											</ul>
+										</div>
+										
+										<div class="form-group">
+											<h6>قیمت</h6>
+											<ul class="no-ul-list mb-3">
+												{{form.form.price|add_class:"form-control"}}
+
+											</ul>
+										</div>
+										
+										<div class="row">
+											<div class="col-lg-12 col-md-12 col-sm-12 pt-4">
+												<button type="submit" class="btn theme-bg rounded full-width">فیلتر</button>
+											</div>
+										</div>
+										
+									</div>
+									{% csrf_token %}
+								</form>
+								</div>
+							</div>
+                        </div>
+
+						<!-- Content -->
+						<div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12">
+									<div class="short_wraping">
+										<div class="row m-0 align-items-center justify-content-between">
+										
+											<div class="col-lg-4 col-md-5 col-sm-12  col-sm-6">
+												<div class="shorting_pagination_laft">
+                                                    <h6 class="m-0"> {% if request.POST %}{{categoryname.count}}{% else %}{{ categoryname }}{% endif %}</h6>
+												</div>
+											</div>
+								
+										</div>
+									</div>
+								</div>
+							</div>
+	
+							<div class="row justify-content-center">
+                                {% for pro in categoryname %}
+								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+									<div class="crs_grid shadow_none brd">
+										<div class="crs_grid_thumb">
+											<a href="{% url 'product:detail' pro.slug %}" class="crs_detail_link">
+												<img style="height:auto;" src="/{{pro.image}}" class="img-fluid rounded" alt="{{pro.slug}}">
+											</a>
+											<div class="crs_locked_ico">
+												<i class="fa fa-lock"></i>
+											</div>
+										</div>
+										<div class="crs_grid_caption">
+											<div class="crs_flex">
+												<div class="crs_fl_first">
+                                                    {% for ca in pro.language.all %}
+													<div class="crs_cates cl_8"><span>{{ca}}</span></div>
+                                            {% endfor %}
+												
+												</div>
+												<div class="crs_fl_last">
+													<div class="crs_inrolled"><strong>{{pro.view}}</strong>بازدید</div>
+												</div>
+											</div>
+											<div class="crs_title"><h4><a href="{% url 'product:detail' pro.id %}/" class="crs_title_link">{{ pro.name }}</a></h4></div>
+											<h6>{{pro.small_description|truncatechars:150}}</h6>
+											<div class="crs_info_detail">
+												<ul>
+													<li><i class="fa fa-file-pdf"></i><span>{{pro.tutorial}}</span></li>
+													
+													<li><i class="fa fa-signal text-warning"></i><span>{{pro.tutorial_level}}</span></li>
+												</ul>
+											</div>
+										</div>
+										<div class="crs_grid_foot">
+											<div class="crs_flex">
+										
+												<div class="crs_fl_last">
+													<div class="crs_price">{% if pro.price_percent > 0 %}<span style="color:red">{{pro.price_percent}}٪  تخفیف</span>{% endif %}<h2><span class="theme-cl">{% takhfif pro.price pro.pricepercent pro.id %}</span><span class="currency">تومان</span></h2></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							    {% endfor %}
+							
+							</div>
+							
+							<!-- Pagination -->
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12">
+									<ul class="pagination p-center">
+		
+										
+			{% for pagination in page %}
+									
+										<li class="page-item"><a class="page-link bg-dark" href="?page={{forloop.counter}}">{{forloop.counter}}</a></li>
+									
+									
+			{% endfor %}
+									</ul>
+							</div> 
+								
+						</div>
+							
+						</div>
+					
+					</div>
+				</div>
+			</section>
+			<!-- ============================ All Cources ================================== -->
+			
+			<!-- ============================ Call To Action ================================== -->
+	
+			<!-- ============================ Call To Action End ================================== -->
+			
+			<!-- ============================ Footer Start ================================== -->
+			{% include 'main/footer.html' %}
+			<!-- ============================ Footer End ================================== -->
+			
+			<!-- Log In Modal -->
+		
+			<!-- End Modal -->
+			
+			<a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
+			
+
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Wrapper -->
+		<!-- ============================================================== -->
+
+		<!-- ============================================================== -->
+		<!-- All Jquery -->
+		<!-- ============================================================== -->
+        <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/assets/js/popper.min.js"></script>
+		<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/assets/js/select2.min.js"></script>
+		<script type="text/javascript" src="/assets/js/slick.js"></script>
+		<script type="text/javascript" src="/assets/js/moment.min.js"></script>
+		<script type="text/javascript" src="/assets/js/daterangepicker.js"></script> 
+		<script type="text/javascript" src="/assets/js/metisMenu.min.js"></script>	
+		<script type="text/javascript" src="/assets/js/summernote.min.js"></script>
+		<script type="text/javascript" src="/assets/js/custom.js"></script>
+		<!-- ============================================================== -->
+		<!-- This page plugins -->
+		<!-- ============================================================== -->		
+
+	</body>
+
+</html>

@@ -10,7 +10,7 @@ class singleController extends Controller
 {
     public function index(Product $product){
         // $product = Product::where('name','=',$slug)->first();
-        $comment = Comment::where("product_id", '=',$product->id)->get();
+        $comment = Comment::where("product_id", '=',$product->id)->where('status','=','open')->get();
         
         return view("main.detail",['product'=>$product,'comment'=>$comment]);
     }

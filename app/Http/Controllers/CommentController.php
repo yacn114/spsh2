@@ -38,7 +38,7 @@ class CommentController extends Controller
             'product_id'=>$product->id,
         ]);
         
-        return redirect()->back()->with('success', 'عملیات با موفقیت انجام شد!');
+        return redirect()->back()->with('success', 'کامنت شما ثبت شد!');
 
     }
 

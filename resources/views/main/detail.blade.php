@@ -146,6 +146,11 @@
 									<div class="edu_wraper">
                                         <h4 class="edu_title">ثبت دیدگاه</h4>
 										<div class="review-form-box form-submit">
+											@session('success')
+												<div class="p-4 bg-green-100">
+													{{ $value }}
+												</div>
+											@endsession
                                             <form method="post" action="{{route('comment_store',$product->id)}}">
                                                 <div class="row">
                                                     
@@ -156,11 +161,7 @@
                                                     @foreach ($errors->all() as $error)
                                                     {{$error}} <br>
                                                     @endforeach
-                                                    @if (session('success'))
-                                                    <div class="alert alert-danger">
-                                                        {{ session('success') }}
-                                                    </div>
-                                                @endif
+
                                                 
                                                 
                                                 
