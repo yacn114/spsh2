@@ -5,10 +5,10 @@
 		<meta charset="utf-8" />
 		<meta name="author" content="Themezhub" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>دسته بندی - {{$category->name}}</title>
+        <title>فیلتر</title>
 
         <!-- Custom CSS -->
-        <link type="text/css" href="{% static 'assets/css/styles.css' %}" rel="stylesheet">
+        <link type="text/css" href="/assets/css/styles.css" rel="stylesheet">
 		
     </head>
 	
@@ -23,7 +23,7 @@
             <!-- Top header  -->
             <!-- ============================================================== -->
             <!-- Start Navigation -->
-     {% include "main/navigation.html" %}
+     @include("main/navigation")
 			<!-- End Navigation -->
 			<div class="clearfix"></div>
 			<!-- ============================================================== -->
@@ -37,11 +37,11 @@
 						<div class="col-lg-12 col-md-12">
 							
 							<div class="breadcrumbs-wrap">
-								<h1 class="breadcrumb-title font-2">دسته بندی - {{inp}}</h1>
+								<h1 class="breadcrumb-title font-2">فیلتر</h1>
 								<nav aria-label="breadcrumb">
 									<ol class="breadcrumb p-0 bg-white">
-										<li class="breadcrumb-item"><a href="{% url 'home:home' %}">خانه</a></li>
-										<li class="breadcrumb-item active theme-cl" aria-current="page">{{inp}}</li>
+										<li class="breadcrumb-item"><a href="{{route('home')}}">خانه</a></li>
+										<li class="breadcrumb-item active theme-cl" aria-current="page">فیلتر</li>
 									</ol>
 								</nav>
 							</div>
@@ -60,7 +60,7 @@
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
 							<div class="page-sidebar p-0">
 								<a class="filter_links" data-toggle="collapse" href="#fltbox" role="button" aria-expanded="false" aria-controls="fltbox">فیلتر پیشرفته<i class="fa fa-sliders-h mr-2"></i></a>							
-								<form method="post" >
+								<form method="post" action="{{route('filter_store')}}">
 								<div class="collapse" id="fltbox">
 									<!-- Find New Property -->
 									<div class="sidebar-widgets p-4">
@@ -68,7 +68,7 @@
 										<div class="form-group">
 											<div class="input-with-icon">
 
-												{% render_field form.form.title class="form-control" placeholder="نام دوره" %}
+												<input type="text" name="name" class="form-control" placeholder="نام دوره...">
 												<i class="ti-search"></i>
 											</div>
 										</div>
@@ -79,16 +79,29 @@
 										
 										<div class="form-group">
 											<h6>سطح مهارت</h6>
-											<ul class="no-ul-list mb-3">
-												{{form.form.tutorial_level|add_class:"form-control"}}
+											
+                                                
 
-											</ul>
+                                                <select name="levels" id="levels-select" class="form-control">
+                                                  <option value="">--Please choose an option--</option>
+                                                    <option value="level1">سطح 1</option>
+                                                    <option value="level2">سطح 2</option>
+                                                    <option value="level3">سطح 3</option>
+                                                </select>
+                                                
+
+											
 										</div>
 										
 										<div class="form-group">
 											<h6>قیمت</h6>
 											<ul class="no-ul-list mb-3">
-												{{form.form.price|add_class:"form-control"}}
+												<select name="price" id="price-select" class="form-control">
+                                                    <option value="">--Please choose an option--</option>
+                                                      <option value="free">رایگان</option>
+                                                      <option value="all">همه</option>
+                                                  </select>
+                                                  
 
 											</ul>
 										</div>
@@ -100,7 +113,7 @@
 										</div>
 										
 									</div>
-									{% csrf_token %}
+									@csrf
 								</form>
 								</div>
 							</div>
@@ -115,7 +128,7 @@
 										
 											<div class="col-lg-4 col-md-5 col-sm-12  col-sm-6">
 												<div class="shorting_pagination_laft">
-                                                    <h6 class="m-0"> {% if request.POST %}{{categoryname.count}}{% else %}{{ categoryname }}{% endif %}</h6>
+                                                    <h6 class="m-0"> @if(request()->method() == "POST")hi count @else{{ 'hi name' }}@endif</h6>
 												</div>
 											</div>
 								
@@ -125,51 +138,11 @@
 							</div>
 	
 							<div class="row justify-content-center">
-                                {% for pro in categoryname %}
-								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-									<div class="crs_grid shadow_none brd">
-										<div class="crs_grid_thumb">
-											<a href="{% url 'product:detail' pro.slug %}" class="crs_detail_link">
-												<img style="height:auto;" src="/{{pro.image}}" class="img-fluid rounded" alt="{{pro.slug}}">
-											</a>
-											<div class="crs_locked_ico">
-												<i class="fa fa-lock"></i>
-											</div>
-										</div>
-										<div class="crs_grid_caption">
-											<div class="crs_flex">
-												<div class="crs_fl_first">
-                                                    {% for ca in pro.language.all %}
-													<div class="crs_cates cl_8"><span>{{ca}}</span></div>
-                                            {% endfor %}
-												
-												</div>
-												<div class="crs_fl_last">
-													<div class="crs_inrolled"><strong>{{pro.view}}</strong>بازدید</div>
-												</div>
-											</div>
-											<div class="crs_title"><h4><a href="{% url 'product:detail' pro.id %}/" class="crs_title_link">{{ pro.name }}</a></h4></div>
-											<h6>{{pro.small_description|truncatechars:150}}</h6>
-											<div class="crs_info_detail">
-												<ul>
-													<li><i class="fa fa-file-pdf"></i><span>{{pro.tutorial}}</span></li>
-													
-													<li><i class="fa fa-signal text-warning"></i><span>{{pro.tutorial_level}}</span></li>
-												</ul>
-											</div>
-										</div>
-										<div class="crs_grid_foot">
-											<div class="crs_flex">
-										
-												<div class="crs_fl_last">
-													<div class="crs_price">{% if pro.price_percent > 0 %}<span style="color:red">{{pro.price_percent}}٪  تخفیف</span>{% endif %}<h2><span class="theme-cl">{% takhfif pro.price pro.pricepercent pro.id %}</span><span class="currency">تومان</span></h2></div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							    {% endfor %}
-							
+                               @if($products_filter)
+                               @foreach ($products as $product)
+                               <x-product-card :product="$product" />
+                           @endforeach 
+                               @endif
 							</div>
 							
 							<!-- Pagination -->
@@ -178,12 +151,21 @@
 									<ul class="pagination p-center">
 		
 										
-			{% for pagination in page %}
-									
-										<li class="page-item"><a class="page-link bg-dark" href="?page={{forloop.counter}}">{{forloop.counter}}</a></li>
-									
-									
-			{% endfor %}
+                                        <hr>
+								@if($products_filter)
+                            @if ($products_filter->hasMorePages())
+                                    <a href="{{ $products_filter->nextPageUrl() }}">
+                                <button class="btn btn-success">صفحه بعد</button>
+                                        </a>
+                                    @endif
+                                    @if (!$products_filter->onFirstPage())
+                                    <a href="{{ $products_filter->previousPageUrl() }}">
+                                        <button class="btn btn-success">صفحه قبل</button>
+        
+                                    </a>
+                                @endif
+                                @endif
+                                <hr>
 									</ul>
 							</div> 
 								
@@ -201,7 +183,7 @@
 			<!-- ============================ Call To Action End ================================== -->
 			
 			<!-- ============================ Footer Start ================================== -->
-			{% include 'main/footer.html' %}
+			@include('main.footer')
 			<!-- ============================ Footer End ================================== -->
 			
 			<!-- Log In Modal -->

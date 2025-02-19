@@ -15,12 +15,13 @@ Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('l
 Route::post('search/', [SearchController::class,'store'])->name('search');
 Route::get('product/{product:slug}', [singleController::class,'index'])->name('single');
 Route::post('comment/{product:id}', [CommentController::class,'store'])->name('comment_store')->middleware('auth');
+Route::get('category/{category:slug}', [CategoryController::class,'index'])->name('category');
 Route::get('search/', function(){
     return redirect(route('home2'));
 });
 
 Route::get('/dashboard', [ProfileController::class, 'edit'])->name('dashboard')->middleware(['auth']); // not writed
 Route::get('filter/', [FilterController::class,'index'])->name('filter'); // not writed
+Route::post('filter/', [FilterController::class,'store'])->name('filter_store'); // not writed
 Route::get('cat/{slug}', [])->name('cat'); // not writed
 Route::get('book/{slug}', [])->name('book'); // not writed
-Route::get('category/{category:slug}', [CategoryController::class,'index'])->name('category'); // not writed

@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="http://cdn.font-store.ir/behdad.css">
-    <link rel="stylesheet" href="https://cdn.fontcdn.ir/Font/Persian/IranianSans/iranian-sans.css">
+    {{-- <link rel="stylesheet" type="text/css" href="http://cdn.font-store.ir/behdad.css"> --}}
+    {{-- <link rel="stylesheet" href="https://cdn.fontcdn.ir/Font/Persian/IranianSans/iranian-sans.css"> --}}
 
 
     <style>
-        body {
-            font-family: 'Behdad', sans-serif !important;
-            font-size: 18px !important;
-        }
+ 
 
         #logo{
             border-radius: 50%;
             height: 50px;
             width:70px;
         }
-        body {
-    font-family: 'Iranian Sans', sans-serif;
-}
+
     
     </style>
     <meta charset="UTF-8">

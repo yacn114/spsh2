@@ -39,15 +39,28 @@
                     <li>
                         <a href="#category">دسته بندی های آموزشی</a>
                         <ul class="nav-dropdown nav-submenu">
-                            @foreach($parent_categories as $category)
-                                @include('main.menu-category', ['category' => $category])
+                            @foreach($parent_categories as $categor)
+                                @include('main.menu-category', ['category' => $categor])
                             @endforeach
                         </ul>
                     </li>
-                    <li><a href="#">مشاوره رایگان</a></li>
+                    <li>
+                        <a href="#category">ارتباط با ما</a>
+                    </li>
+                    <li>
+                        <a href="{{route('home')}}">index1</a>
+                    </li>
+                    <li>
+                        <a href="{{route('home2')}}">index2</a>
+                    </li>
+                    @if(auth()->check())
+                        <li><a href="dashboard.html">حساب کاربری</a></li>
+
+                    @endif
                 </ul>
 
                 <ul class="nav-menu nav-menu-social align-to-left">
+
                     @if(auth()->check())
 
                     <li class="add-listing bg-white"><a href="{{route('dashboard')}}">داشبورد</a></li>

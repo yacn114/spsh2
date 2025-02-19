@@ -13,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index(Category $category)
     {
-        return view("main.filter",['category'=>$category]);
+        $products = $category->products()->orderBy("id","desc")->paginate(6);
+        return view("main.category",['category_i'=>$category,'products'=> $products]);
     }
 
     /**

@@ -3,7 +3,7 @@
         <div class="crs_grid_thumb">
             <a href="{{ route('single', $product->slug) }}" class="crs_detail_link">
                 @if($product->image->first())
-                    <img src="{{ $product->image->first()->image }}" class="img-fluid rounded" style="height: 250px" alt="{{ $product->image->first()->alt }}">
+                    <img src="{{ $product->image->first()->image ?? ""}}" class="img-fluid rounded" style="height: 250px" alt="{{ $product->image->first()->alt }}">
                 @else
                     <p>تصویری برای این محصول موجود نیست.</p>
                 @endif

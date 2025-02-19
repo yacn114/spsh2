@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
 //        $child_categories = Category::query()->whereNotNull("category_id")->get();
         $site_data = SiteData::first();
         $parent_categories = Category::query()->whereNull("category_id")->get();
-
+        
 //        view()->share("child_categories", $child_categories);
         view()->share("parent_categories", $parent_categories);
         view()->share("data", $site_data);
