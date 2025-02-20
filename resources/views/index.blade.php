@@ -10,7 +10,7 @@
                 <div class="col-lg-9 col-md-10 col-sm-12">
                     <div class="simple-search-wrap">
                         <div class="hero_search-2 text-center">
-                            <form method="post" action="{{route('search')}}">
+                            <form method="get" action="{{route('search')}}">
                                 @csrf
                                 <h1 class="banner_title mb-4 font-2">میتونی دوره هارو سرچ کنی! <br>( اگه هنوز مطمعن نیستی از کجا شروع کنی راهنمایی رو یه سر بزن )</h1>
                                 <div class="input-group simple_search">
@@ -54,7 +54,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-12 col-md-12 mt-2">
                     <div class="sec-heading center">
-                        <h3 class="font-2">دوره های آموزشی <span style="color:rgb(193, 0, 0)"><i class="fas fa-fire"></i> هیجانی </span></h3>
+                        <h3 class="font-2">دوره های آموزشی <span style="color:rgb(193, 0, 0)"><i class="fas fa-fire"></i> تخفیفی </span></h3>
                     </div>
                     <div class="row justify-content-center">
                         @foreach ($productـdiscount_percent as $product)

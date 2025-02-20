@@ -11,12 +11,18 @@ class SearchController extends Controller
     {
         $searchTerm = $request->input('search');
 
-        $products = Product::where(function($query) use ($searchTerm) {
+        $productsQuery = Product::where(function($query) use ($searchTerm) {
             $query->where('name', 'LIKE', "%{$searchTerm}%")
                   ->orWhere('slug', 'LIKE', "%{$searchTerm}%")
                   ->orWhere('description', 'LIKE', "%{$searchTerm}%");
-        })->get();
+        })->where('status', 'active');
         
-        return view('main.search', compact(['products','searchTerm']));
+        $products_count = $productsQuery->count();
+        
+
+        $products = $productsQuery->paginate(9)->appends(['search' => $searchTerm]);
+        
+        return view('main.search', compact(['products', 'searchTerm', 'products_count']));
+        
     }
 }

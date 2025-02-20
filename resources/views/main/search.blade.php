@@ -10,7 +10,7 @@
 		<div class="row justify-content-center">
 			<div class="simple-search-wrap text-right">
 					<div class="hero_search-2">
-						<form method="post" action="{{route('search')}}">
+						<form method="get" action="{{route('search')}}">
 							<br>						
 							<h4 class="font-lg mb-4" style="color: white;">یادت نرفته که قبلش میتونی از راهنمایی کمک بگیری ؟ باهاش میتونی دوره مناسب خودتو پیدا کنی :)</h4>
 							@csrf
@@ -29,7 +29,7 @@
 				<div class="sec-heading center">
 				<br>
 				<br>
-					<h3 class="font-2" style="color:white">نتایج جستجوی : {{$products->count()}} </h3>
+					<h3 class="font-2" style="color:white">نتایج جستجوی : {{$products_count}} </h3>
 				</div>
 			</div>
 		</div>
@@ -39,9 +39,26 @@
 				<x-product-card :product="$product" />
 			@endforeach
 		</div>
+		<hr>
+
+		@if ($products->hasMorePages())
+			<a href="{{ $products->nextPageUrl() . '&search=' . request('search') }}">
+				<button class="btn btn-info">صفحه بعد</button>
+			</a>
+		@endif
 		
+		@if (!$products->onFirstPage())
+			<a href="{{ $products->previousPageUrl() . '&search=' . request('search') }}">
+				<button class="btn btn-info">صفحه قبل</button>
+			</a>
+		@endif
+		
+		<hr>
+				
 		<div class="row justify-content-center">
+
 			<div class="col-lg-7 col-md-8 mt-2">
+
 				<div class="text-center"><a href="{{route('filter')}}" class="btn btn-md theme-bg-light theme-cl">صفحه فیلتر</a></div>
 			</div>
 		</div>

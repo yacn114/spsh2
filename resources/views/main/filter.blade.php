@@ -60,7 +60,7 @@
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
 							<div class="page-sidebar p-0">
 								<a class="filter_links" data-toggle="collapse" href="#fltbox" role="button" aria-expanded="false" aria-controls="fltbox">فیلتر پیشرفته<i class="fa fa-sliders-h mr-2"></i></a>							
-								<form method="post" action="{{route('filter_store')}}">
+								<form method="get" action="{{route('filter_show')}}">
 								<div class="collapse" id="fltbox">
 									<!-- Find New Property -->
 									<div class="sidebar-widgets p-4">
@@ -99,13 +99,55 @@
 												<select name="price" id="price-select" class="form-control">
                                                     <option value="">--Please choose an option--</option>
                                                       <option value="free">رایگان</option>
+                                                      <option value="hot">هیجانی</option>
+                                                      <option value="discount">شامل تخفیف</option>
                                                       <option value="all">همه</option>
                                                   </select>
                                                   
 
 											</ul>
 										</div>
-										
+										<div class="form-group">
+											<h6>بازدید</h6>
+											<ul class="no-ul-list mb-3">
+												<select name="seen" id="price-select" class="form-control">
+                                                    <option value="">--Please choose an option--</option>
+													<option value="all">بیشترین بازدید در کل دوره</option>
+                                                      <option value="yesterday">بیشترین بازدید در روز اخیر</option>
+                                                      <option value="last_week">بیشترین بازدید در هفته اخیر</option>
+                                                      <option value="last_mount">بیشترین بازدید در ماه اخیر</option>
+                                                  </select>
+                                                  
+
+											</ul>
+										</div>
+										<div class="form-group">
+											<h6>زبان</h6>
+											<ul class="no-ul-list mb-3">
+												<select name="language" id="price-select" class="form-control">
+                                                    <option value="">--Please choose an option--</option>
+													<option value="fa">فارسی</option>
+                                                      <option value="en">انگلیسی</option>
+                                                      
+                                                  </select>
+                                                  
+
+											</ul>
+										</div>
+										<div class="form-group">
+											<h6>دسته بندی</h6>
+											<ul class="no-ul-list mb-3">
+												<select name="category" id="price-select" class="form-control">
+                                                    <option value="">--Please choose an option--</option>
+													@foreach ($category as $cat)	
+													<option value="{{$cat->slug}}">{{$cat->name}}</option>
+													@endforeach
+
+                                                  </select>
+                                                  
+
+											</ul>
+										</div>
 										<div class="row">
 											<div class="col-lg-12 col-md-12 col-sm-12 pt-4">
 												<button type="submit" class="btn theme-bg rounded full-width">فیلتر</button>
@@ -128,7 +170,7 @@
 										
 											<div class="col-lg-4 col-md-5 col-sm-12  col-sm-6">
 												<div class="shorting_pagination_laft">
-                                                    <h6 class="m-0"> @if(request()->method() == "POST")hi count @else{{ 'hi name' }}@endif</h6>
+                                                    <h6 class="m-0"> hi</h6>
 												</div>
 											</div>
 								
@@ -139,7 +181,7 @@
 	
 							<div class="row justify-content-center">
                                @if($products_filter)
-                               @foreach ($products as $product)
+                               @foreach ($products_filter as $product)
                                <x-product-card :product="$product" />
                            @endforeach 
                                @endif

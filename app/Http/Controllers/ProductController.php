@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Comment;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -37,7 +39,13 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $comment = Comment::where("product_id", $product->id)
+                  ->where('status', 'open')
+                  ->get();
+        $userComments = Comment::where('user_id', Auth::id())->where('product_id','=',$product->id)->get();
+        $comment = $comment->merge($userComments);
+ 
+        return view("main.detail",['product'=>$product,'comment'=>$comment]);
     }
 
     /**
