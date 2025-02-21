@@ -70,7 +70,7 @@
 							
 									<div class="col-lg-8 col-md-7 col-sm-12 col-sm-6">
 										<div class="dlks_152">
-											<a href="{{route('filter')}}"><button class="btn theme-bg">فیلتر</button></a>
+											<a href="/filter/filter?name=&levels=&price=&language=&category={{$category_i->slug}}"><button class="btn theme-bg">فیلتر</button></a>
 
 									
 										</div>
@@ -80,15 +80,14 @@
 						</div>
 					
 					</div>
-					
 					<div class="row justify-content-center">
 						
-							@foreach ($products as $product)
-								<x-product-card2 :product="$product" />
-							@endforeach
+						@foreach ($products as $product)
+						<x-product-card2 :product="$product" :size="$size" />
+						@endforeach
 						
 					</div>
-			
+					
 								<!-- Pagination -->
 <div class="row">
 						<div class="col-lg-12 col-md-12 col-sm-12">

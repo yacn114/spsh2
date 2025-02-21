@@ -20,6 +20,6 @@ Route::get('search/', [SearchController::class,'store'])->name('search');
 
 Route::get('/dashboard', [ProfileController::class, 'edit'])->name('dashboard')->middleware(['auth']); // not writed
 Route::get('filter/', [FilterController::class,'index'])->name('filter'); // not writed
-Route::post('filter/', [FilterController::class,'show'])->name('filter_show'); // not writed
+Route::get('filter/filter', [FilterController::class,'show'])->name('filter_show'); // not writed
 Route::get('cat/{slug}', [])->name('cat'); // not writed
 Route::get('book/{slug}', [])->name('book'); // not writed

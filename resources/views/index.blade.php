@@ -47,6 +47,13 @@
                         <x-product-card :product="$product" />
                     @endforeach
                 </div>
+                <div class="row justify-content-center">
+
+                    <div class="col-lg-7 col-md-8 mt-2">
+        
+                        <div class="text-center"><a href="/filter/filter?name=&levels=&price=hot&language=&category=&" class="btn btn-md theme-bg-light theme-cl">ادامه محصولات هیجانی</a></div>
+                    </div>
+                </div>
             </div>
             
 
@@ -61,7 +68,13 @@
                             <x-product-card :product="$product" />
                         @endforeach
                     </div>
-                 
+                    <div class="row justify-content-center">
+
+                        <div class="col-lg-7 col-md-8 mt-2">
+            
+                            <div class="text-center"><a href="/filter/filter?name=&levels=&price=discount&language=&category=&" class="btn btn-md theme-bg-light theme-cl">ادامه محصولات تخفیفی</a></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <hr>

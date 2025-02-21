@@ -19,7 +19,7 @@
             <div class="nav-menus-wrapper">
                 <ul class="nav-menu">
 
-                    <li class="active"><a href="#">خانه</span></a>
+                    {{-- <li class="active"><a href="#">خانه</span></a> --}}
             
                     </li>
 
@@ -32,18 +32,16 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#category">ارتباط با ما</a>
-                    </li>
-                    <li>
-                        <a href="{{route('home')}}">index1</a>
-                    </li>
-                    <li>
-                        <a href="{{route('home2')}}">index2</a>
-                    </li>
-                    @if(auth()->check())
-                        <li><a href="dashboard.html">حساب کاربری</a></li>
+                        <a href="{{route('filter')}}">جستجوی پیشرفته (فیلتر)</a>
 
-                    @endif
+                    </li>
+                    <li>
+                        <a href="{{route('home')}}">خانه 1</a>
+                    </li>
+                    <li>
+                        <a href="{{route('home2')}}">خانه 2</a>
+                    </li>
+
                 </ul>
 
                 <ul class="nav-menu nav-menu-social align-to-left">

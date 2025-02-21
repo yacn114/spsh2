@@ -1,4 +1,4 @@
-<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+<div class="col-xl-{{$size}} col-lg-{{$size}} col-md-12 col-sm-12">
     <div class="crs_grid_list">
         
         <div class="crs_grid_list_thumb">

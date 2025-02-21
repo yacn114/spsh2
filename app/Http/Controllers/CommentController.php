@@ -31,14 +31,18 @@ class CommentController extends Controller
      */
     public function store(StoreCommentRequest $request,Product $product)
     {
+        if(Comment::query()->where('product_id','=',$product->id)->where('user_id','=',Auth::user()->id)->count() >= 1){
+            return redirect()->back()->with('warning', 'شما بیش از حد مجاز کامنت گذاشتید!');
+        }else{
+            $comment = Comment::create([
+                'comment'=>$request->validated("comment"),
+                "user_id"=>Auth::user()->id,
+                'product_id'=>$product->id,
+            ]);
         
-        $comment = Comment::create([
-            'comment'=>$request->validated("comment"),
-            "user_id"=>Auth::user()->id,
-            'product_id'=>$product->id,
-        ]);
-        
-        return redirect()->back()->with('success', 'کامنت شما ثبت شد!');
+            return redirect()->back()->with('success', 'کامنت شما ثبت شد!');            
+        }
+
 
     }
 

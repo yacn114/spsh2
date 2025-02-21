@@ -1,4 +1,7 @@
 @extends('layout.base2')
+@section('title')
+{{$data->nameE . ' | ' . $data->nameF}}
+@endsection
 @section('content')
 <div class="clearfix"></div>
 <!-- ============================================================== -->
@@ -16,7 +19,7 @@
                         <div class="elsio_tag">طرح تخفیف تابستان آموزشی</div>
                         <h1 class="banner_title mb-4 font-2">در بین هزاران ساعت آموزش جستجو کنید...</h1>
                         <p class="font-lg mb-4">مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
-                        <form action="{{route('search')}}" method="POST">
+                        <form action="{{route('search')}}" method="get">
                             @csrf
                         <div class="input-group simple_search">
                             <i class="fa fa-search ico"></i>
@@ -73,7 +76,8 @@
 <!-- ============================ Our Awards End ================================== -->
 
 <!-- ============================ Top Categories Start ================================== -->
-<section class="min">
+
+<section class="min" style="background-color: whitesmoke">
     <div class="container">
 
         <div class="row justify-content-center">
@@ -110,73 +114,18 @@
 <!-- ============================ Top Categories End ================================== -->
 
 <!-- ============================ How It Works Start ================================== -->
-<section class="min gray">
-    <div class="container">
 
-        <div class="row justify-content-center">
-            <div class="col-lg-7 col-md-8">
-                <div class="sec-heading center">
-                    <h3 class="font-2">روند فعالیت <span class="theme-cl">تیم متخصص</span></h3>
-                    <p>با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row justify-content-center mt-5">
-
-            <!-- Single Location -->
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="wrk_grid">
-                    <div class="wrk_grid_ico">
-                        <i class="fa fa-search-location"></i>
-                    </div>
-                    <div class="wrk_caption">
-                        <h4 class="font-2">جستجوی دوره</h4>
-                        <p>ما به بیش از 3400 دانش‌آموز جدید کمک کرده‌ایم تا وارد محبوب‌ترین تیم‌های فناوری شوند.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Location -->
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="wrk_grid active">
-                    <div class="wrk_grid_ico">
-                        <i class="fa fa-calendar-week"></i>
-                    </div>
-                    <div class="wrk_caption">
-                        <h4 class="font-2">برگـزاری دوره</h4>
-                        <p>ما به بیش از 3400 دانش‌آموز جدید کمک کرده‌ایم تا وارد محبوب‌ترین تیم‌های فناوری شوند.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Location -->
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="wrk_grid">
-                    <div class="wrk_grid_ico">
-                        <i class="fa fa-award"></i>
-                    </div>
-                    <div class="wrk_caption">
-                        <h4 class="font-2">ارائـه مدرک</h4>
-                        <p>ما به بیش از 3400 دانش‌آموز جدید کمک کرده‌ایم تا وارد محبوب‌ترین تیم‌های فناوری شوند.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</section>
 <div class="clearfix"></div>
 <!-- ============================ How It Works End ================================== -->
 
 <!-- ============================ Latest Cources Start ================================== -->
-<section class="min" style="background-color: whitesmoke">
+<hr>
+<section class="min" style="">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-7 col-md-8">
                 <div class="sec-heading center">
-                    <h3 class="font-2">جدیدترین دوره های <span class="theme-cl">ما</span></h3>
+                    <h3 class="font-2">جدیدترین دوره های <span class="theme-cl">هیجانی و تخفیفی</span></h3>
                     <p>با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.</p>
                 </div>
             </div>
@@ -224,7 +173,7 @@
         <div class="_testimonial_flex">
             <div class="_testimonial_flex_first">
                 <div class="_tsl_flex_thumb">
-                    <img src="assets/img/user-1.jpg" class="img-fluid" alt="">
+                    <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" class="img-fluid" alt="user-profile">
                 </div>
                 <div class="_tsl_flex_capst">
                     <h5>{{$lComment->users->name}}</h5>
@@ -233,12 +182,8 @@
                     <div class="_ovr_rates"><span><i class="fa fa-star"></i></span>{{$lComment->rating}}</div>
                 </div>
             </div>
-            <div class="_testimonial_flex_first_last">
-                <div class="_tsl_flex_thumb">
-                    <img src="assets/img/c-1.png" class="img-fluid" alt="">
-                </div>
-            </div>
         </div>
+        <p>{{$lComment->created_at}}</p>
         
         <div class="facts-detail">
             <p>{{$lComment->comment}}</p>

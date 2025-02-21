@@ -13,8 +13,9 @@ class CategoryController extends Controller
      */
     public function index(Category $category)
     {
+        $size = "6";
         $products = $category->products()->where('status','=','active')->orderBy("id","desc")->paginate(6);
-        return view("main.category",['category_i'=>$category,'products'=> $products]);
+        return view("main.category",['category_i'=>$category,'products'=> $products,'size'=>$size]);
     }
 
     /**

@@ -35,7 +35,7 @@
             </div>
             <div class="nav-menus-wrapper">
                 <ul class="nav-menu">
-                    <li class="active"><a href="home:home">خانه</a></li>
+                    {{-- <li class="active"><a href="home:home">خانه</a></li> --}}
                     <li>
                         <a href="#category">دسته بندی های آموزشی</a>
                         <ul class="nav-dropdown nav-submenu">
@@ -45,18 +45,15 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#category">ارتباط با ما</a>
+                        <a href="{{route('filter')}}">جستجوی پیشرفته (فیلتر)</a>
                     </li>
                     <li>
-                        <a href="{{route('home')}}">index1</a>
+                        <a href="{{route('home')}}">خانه 1</a>
                     </li>
                     <li>
-                        <a href="{{route('home2')}}">index2</a>
+                        <a href="{{route('home2')}}">خانه 2</a>
                     </li>
-                    @if(auth()->check())
-                        <li><a href="dashboard.html">حساب کاربری</a></li>
 
-                    @endif
                 </ul>
 
                 <ul class="nav-menu nav-menu-social align-to-left">

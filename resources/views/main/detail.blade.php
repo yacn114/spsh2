@@ -147,10 +147,15 @@
                                         <h4 class="edu_title">ثبت دیدگاه</h4>
 										<div class="review-form-box form-submit">
 											@session('success')
-												<div class="p-4 bg-green-100">
+												<div class="alert alert-success">
 													{{ $value }}
 												</div>
 											@endsession
+											@session('warning')
+											<div class="alert alert-warning" role="alert">
+												{{ $value }}
+											  </div>
+										@endsession
                                             <form method="post" action="{{route('comment_store',$product->id)}}">
                                                 <div class="row">
                                                     
@@ -245,7 +250,7 @@
 									
 									<ul>
 										<li><i class="ti-user"></i>{{number_format($product->view)}} بازدید</li>
-										
+										<li><i class="bi bi-translate">lang</i>{{$product->language}}</li>
 										<li><i class="ti-bar-chart-alt"></i>سطح {{$product->tutorial_level}}</li>
 										
 									</ul>

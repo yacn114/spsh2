@@ -9,7 +9,7 @@
 
         <!-- Custom CSS -->
         <link type="text/css" href="/assets/css/styles.css" rel="stylesheet">
-		
+
     </head>
 	
     <body dir="rtl">
@@ -37,11 +37,11 @@
 						<div class="col-lg-12 col-md-12">
 							
 							<div class="breadcrumbs-wrap">
-								<h1 class="breadcrumb-title font-2">فیلتر</h1>
+								<h1 class="breadcrumb-title font-2">جستجوی پیشرفته </h1>
 								<nav aria-label="breadcrumb">
 									<ol class="breadcrumb p-0 bg-white">
 										<li class="breadcrumb-item"><a href="{{route('home')}}">خانه</a></li>
-										<li class="breadcrumb-item active theme-cl" aria-current="page">فیلتر</li>
+										<li class="breadcrumb-item active theme-cl" aria-current="page">جستجوی پیشرفته</li>
 									</ol>
 								</nav>
 							</div>
@@ -83,7 +83,7 @@
                                                 
 
                                                 <select name="levels" id="levels-select" class="form-control">
-                                                  <option value="">--Please choose an option--</option>
+                                                  <option value="">لطفا یکی از گزینه ها را انتخاب کنید</option>
                                                     <option value="level1">سطح 1</option>
                                                     <option value="level2">سطح 2</option>
                                                     <option value="level3">سطح 3</option>
@@ -97,7 +97,7 @@
 											<h6>قیمت</h6>
 											<ul class="no-ul-list mb-3">
 												<select name="price" id="price-select" class="form-control">
-                                                    <option value="">--Please choose an option--</option>
+                                                    <option value="">لطفا یکی از گزینه ها را انتخاب کنید</option>
                                                       <option value="free">رایگان</option>
                                                       <option value="hot">هیجانی</option>
                                                       <option value="discount">شامل تخفیف</option>
@@ -107,25 +107,12 @@
 
 											</ul>
 										</div>
-										<div class="form-group">
-											<h6>بازدید</h6>
-											<ul class="no-ul-list mb-3">
-												<select name="seen" id="price-select" class="form-control">
-                                                    <option value="">--Please choose an option--</option>
-													<option value="all">بیشترین بازدید در کل دوره</option>
-                                                      <option value="yesterday">بیشترین بازدید در روز اخیر</option>
-                                                      <option value="last_week">بیشترین بازدید در هفته اخیر</option>
-                                                      <option value="last_mount">بیشترین بازدید در ماه اخیر</option>
-                                                  </select>
-                                                  
 
-											</ul>
-										</div>
 										<div class="form-group">
 											<h6>زبان</h6>
 											<ul class="no-ul-list mb-3">
 												<select name="language" id="price-select" class="form-control">
-                                                    <option value="">--Please choose an option--</option>
+                                                    <option value="">لطفا یکی از گزینه ها را انتخاب کنید</option>
 													<option value="fa">فارسی</option>
                                                       <option value="en">انگلیسی</option>
                                                       
@@ -138,7 +125,7 @@
 											<h6>دسته بندی</h6>
 											<ul class="no-ul-list mb-3">
 												<select name="category" id="price-select" class="form-control">
-                                                    <option value="">--Please choose an option--</option>
+                                                    <option value="">لطفا یکی از گزینه ها را انتخاب کنید</option>
 													@foreach ($category as $cat)	
 													<option value="{{$cat->slug}}">{{$cat->name}}</option>
 													@endforeach
@@ -150,7 +137,7 @@
 										</div>
 										<div class="row">
 											<div class="col-lg-12 col-md-12 col-sm-12 pt-4">
-												<button type="submit" class="btn theme-bg rounded full-width">فیلتر</button>
+												<button type="submit" class="btn theme-bg rounded full-width">جستجو</button>
 											</div>
 										</div>
 										
@@ -170,26 +157,38 @@
 										
 											<div class="col-lg-4 col-md-5 col-sm-12  col-sm-6">
 												<div class="shorting_pagination_laft">
-                                                    <h6 class="m-0"> hi</h6>
+                                                    <h6 class="m-0"> نتایج یافت شده: {{$count ?? ''}} </h6>
+													
 												</div>
 											</div>
+											<h6 class="p-2">{{request()->price}}</h6>
+											<h6 class="p-2">{{request()->language}}</h6>
+											<h6 class="p-2">{{request()->category}}</h6>
+											<h6 class="p-2">{{request()->levels}}</h6>
+											<h6 class="p-2">{{request()->name}}</h6>
+
+											
 								
 										</div>
 									</div>
 								</div>
 							</div>
 	
-							<div class="row justify-content-center">
-                               @if($products_filter)
-                               @foreach ($products_filter as $product)
-                               <x-product-card :product="$product" />
-                           @endforeach 
-                               @endif
-							</div>
-							
+
 							<!-- Pagination -->
 							<div class="row">
 								<div class="col-lg-12 col-md-12 col-sm-12">
+									<div class="row">
+										@if($products_filter)
+											@foreach ($products_filter as $product)
+												<div class="col-12 mb-3">
+													<x-product-card2 :product="$product" :size="$size" />
+												</div>
+											@endforeach
+										@endif
+									</div>
+									
+									 
 									<ul class="pagination p-center">
 		
 										
