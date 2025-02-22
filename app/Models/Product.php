@@ -52,36 +52,41 @@ class Product extends Model
      */
     public function scopeFilter($query, array $filters)
     {
-        return $query->when($filters['name'] ?? null, function ($query, $name) {
-            $query->where('name', 'LIKE', "%{$name}%");
-        })
-        ->when($filters['levels'] ?? null, function ($query, $levels) {
-            $query->where('tutorial_level', $levels);
-        })
-        ->when($filters['price'] ?? null, function ($query, $price) {
-            // اعمال فیلتر بر اساس قیمت
-            if ($price === 'free') {
-                $query->where('price', 0);
-            } elseif ($price === 'hot') {
-                // فرض: محصولات پرطرفدار بر اساس تعداد دانشجویان
-                $query->where('discount', '>',1)->orderBy('discount','desc');
-            } elseif ($price === 'discount') {
-                $query->where('discount_percent', '>', 0)->orderBy('discount_percent','desc');
-            }
-        })
-        
-        ->when($filters['language'] ?? null, function ($query, $language) {
-            $query->where('language', $language);
-        })
-        ->when($filters['category'] ?? null, function ($query, $category) {
-            $query->whereHas('categories', function ($q) use ($category) {
-                $q->where('slug', $category);
+        return $query
+            ->when($filters['name'] ?? null, function ($query, $name) {
+                $query->where('name', 'LIKE', "%{$name}%");
+            })
+            ->when($filters['levels'] ?? null, function ($query, $levels) {
+                $query->where('tutorial_level', $levels);
+            })
+            ->when($filters['price'] ?? null, function ($query, $price) {
+                if ($price === 'free') {
+                    $query->where('price', 0);
+                } elseif ($price === 'hot') {
+                    $query->where('discount', '>', 1)->orderBy('discount', 'desc');
+                } elseif ($price === 'discount') {
+                    $query->where('discount_percent', '>', 0)->orderBy('discount_percent', 'desc');
+                }
+            })
+            ->when($filters['language'] ?? null, function ($query, $language) {
+                $query->where('language', $language);
+            })
+            ->when($filters['category'] ?? null, function ($query, $category) {
+                $query->whereHas('categories', function ($q) use ($category) {
+                    $q->where('slug', $category);
+                });
+            })
+            ->when($filters['catcat'] ?? null, function ($query, $catego) {
+                $query->whereHas('categories', function ($q) use ($catego) {
+                    $q->whereHas('parentCategoryRelation', function ($qq) use ($catego) {
+                        $qq->where('name', $catego);
+                    });
+                });
             });
-        });
     }
+    
+
     // scope filtering ================================================================================
 
 
 }
-
-

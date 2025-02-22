@@ -24,5 +24,9 @@ class Category extends Model
     {
         return $this->belongsToMany(Product::class);
     }
-  
+    public function parentCategoryRelation()
+    {
+        return $this->belongsTo(CategoryCategory::class, 'parentCategory');
+    }
+    
 }

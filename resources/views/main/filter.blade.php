@@ -59,7 +59,7 @@
 					
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
 							<div class="page-sidebar p-0">
-								<a class="filter_links" data-toggle="collapse" href="#fltbox" role="button" aria-expanded="false" aria-controls="fltbox">فیلتر پیشرفته<i class="fa fa-sliders-h mr-2"></i></a>							
+								<a class="filter_links" data-toggle="collapse" href="#fltbox" role="button" aria-expanded="false" aria-controls="fltbox">فیلتر پیشرفته<i class="fa fa-sliders-h mr-2"></i></a>
 								<form method="get" action="{{route('filter_show')}}">
 								<div class="collapse" id="fltbox">
 									<!-- Find New Property -->
@@ -74,7 +74,22 @@
 										</div>
 										
 
-										
+										<div class="form-group">
+											<h6>دسته بندی کلی</h6>
+											
+                                                
+
+                                                <select name="catcat" id="levels-select" class="form-control">
+                                                  <option value="">لطفا یکی از گزینه ها را انتخاب کنید</option>
+                                                 @foreach ($categoryCategory as $catego)
+													 
+												 <option value="{{$catego->name}}">{{$catego->name}}</option>
+												 @endforeach
+                                                </select>
+                                                
+
+											
+										</div>
 										
 										
 										<div class="form-group">
@@ -254,8 +269,15 @@
 		<script type="text/javascript" src="/assets/js/custom.js"></script>
 		<!-- ============================================================== -->
 		<!-- This page plugins -->
-		<!-- ============================================================== -->		
-
+		<!-- ============================================================== -->	
+		<script>
+			$(document).ready(function(){
+				$(".filter_links").click(function(){
+					$("#fltbox").toggleClass("show");
+				});
+			});
+		</script>
+					
 	</body>
 
 </html>

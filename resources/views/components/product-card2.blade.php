@@ -26,19 +26,40 @@
                     <ul>
                         
                         <li><i class="fa fa-user"></i><span>{{$product->student_count}} دانشجو</span></li>
-                        <li><i class="fa fa-eye"></i><span>{{$product->view}} بازدید</span></li>
+                        <li><i class="fa fa-eye"></i><span>{{number_format($product->view)}} بازدید</span></li>
+                        <li><i class="fa fa-level-up-alt"></i><span>{{$product->tutorial_level}}</span></li>
+                        <li><i class="fa fa-globe"></i><span>{{$product->language}}</span></li>
+                        
                     </ul>
                 </div>
             </div>
             <div class="crs_flex">
                 <div class="crs_fl_first">
-                    <div class="crs_price">{{$product->discount_action()}} تومان</div>
-                </div>
-                <div class="crs_fl_last">
-                    <div class="crs_linkview"><a href="{{route('book',$product->slug)}}" class="btn btn-success text-light">ثبت نام</a></div>
+                    <hr>
+                    <div>
+                        <div class="d-flex justify-content-between" >
+                            <span>قیمت بدون تخفیف :</span><span>{{ number_format($product->price) }} تومان</span>
+                        </div>
+    
+                        @if ($product->discount != 0)
+                            <div class="d-flex justify-content-between" ><span>قیمت هیجانی :</span><span>{{ number_format($product->discount) }}</span></div>
+                        @endif
+    
+                        @if ($product->discount_percent != 0)
+                            <div class="d-flex justify-content-between" ><span>درصد تخفیف :</span><span>{{ $product->discount_percent }}%</span></div>
+                        @endif
+                        <hr>
+                    </div>
+                    <div class="d-flex justify-content-between total font-weight-bold" style="color: chocolate;">
+                        <span>قیمت تمام شده</span><h4>{{ $product->discount_action() }} تومان </h4>
+                    </div>
+                    
                 </div>
             </div>
         </div>
-        
+        <div class="crs_fl_last">
+            <div class="crs_linkview"><a href="{{route('book',$product->slug)}}" class="btn btn-success text-light m-2">ثبت نام</a></div>
+        </div>
+
     </div>
 </div>
