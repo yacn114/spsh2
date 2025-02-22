@@ -21,13 +21,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-//        $child_categories = Category::query()->whereNotNull("category_id")->get();
-        $site_data = SiteData::first();
-        $parent_categories = Category::query()->whereNull("category_id")->get();
         
-//        view()->share("child_categories", $child_categories);
+        $site_data = SiteData::first() ?? new SiteData();
+        $parent_categories = Category::whereNull("category_id")->get() ?? collect();
+        
         view()->share("parent_categories", $parent_categories);
         view()->share("data", $site_data);
-
+        
+    
     }
 }

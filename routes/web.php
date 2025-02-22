@@ -15,11 +15,11 @@ Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('l
 Route::get('product/{product:slug}', [ProductController::class,'show'])->name('single');
 Route::post('comment/{product:id}', [CommentController::class,'store'])->name('comment_store')->middleware('auth');
 Route::get('category/{category:slug}', [CategoryController::class,'index'])->name('category');
-
+Route::get('filter/', [FilterController::class,'index'])->name('filter');
+Route::get('filter/filter', [FilterController::class,'show'])->name('filter_show');
 Route::get('search/', [SearchController::class,'store'])->name('search');
 
 Route::get('/dashboard', [ProfileController::class, 'edit'])->name('dashboard')->middleware(['auth']); // not writed
-Route::get('filter/', [FilterController::class,'index'])->name('filter'); // not writed
-Route::get('filter/filter', [FilterController::class,'show'])->name('filter_show'); // not writed
 Route::get('cat/{slug}', [])->name('cat'); // not writed
 Route::get('book/{slug}', [])->name('book'); // not writed
+Route::get('complete/', [])->name('complete'); // not writed

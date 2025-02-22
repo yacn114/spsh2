@@ -225,7 +225,10 @@
 									</div>
 								</div>
 								
-                                
+								<div class="p-3" style="direction: ltr">
+
+									<h3>{{$product->name}}</h3>
+								</div>
                                 <div style="padding: 20px">
                                     <div class="d-flex justify-content-between" >
                                         <span>قیمت بدون تخفیف :</span><span>{{ number_format($product->price) }} تومان</span>

@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-
-
+use App\Models\Permission;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -14,8 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
+         
         $this->call([
+            PermissionSeeder::class,
             ProductSeeder::class,
             categoryCategorySeeder::class,
             CategorySeeder::class,
@@ -24,6 +25,22 @@ class DatabaseSeeder extends Seeder
             SiteDataSeeder::class,
             TicketSeeder::class,
             MovingSeeder::class,
+        ]);
+        $a = Role::query()->create([
+            "name"=> "superuser",
+        ]);
+        $a->permissions()->sync(Permission::all());
+
+        User::factory(10)->create();
+        User::insert([
+            "name"=> "yacn",
+            "email"=> "yacn@gmail.com",
+            "password"=> bcrypt("123"),
+            'email_verified_at' => now(),
+            'phone'=> "09301741497",
+            'balance'=> 1000,
+            'role_id'=>Role::where('name','superuser')->first()->id,
+            'remember_token' => "",
         ]);
 
     }

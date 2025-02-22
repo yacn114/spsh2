@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use App\Models\Comment;
 use App\Models\Product;
+use App\Models\Purchases;
 use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
@@ -31,6 +32,10 @@ class CommentController extends Controller
      */
     public function store(StoreCommentRequest $request,Product $product)
     {
+        
+        if(Purchases::where('product_id', $product->id)
+        ->where('user_id', Auth::id())
+        ->exists()){
         if(Comment::query()->where('product_id','=',$product->id)->where('user_id','=',Auth::user()->id)->count() >= 1){
             return redirect()->back()->with('warning', 'شما بیش از حد مجاز کامنت گذاشتید!');
         }else{
@@ -42,7 +47,10 @@ class CommentController extends Controller
         
             return redirect()->back()->with('success', 'کامنت شما ثبت شد!');            
         }
+    }else{
+        return redirect()->back()->with('warning', 'شما هنوز این محصول را خریداری نکردید!');
 
+    }
 
     }
 

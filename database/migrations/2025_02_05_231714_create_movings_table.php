@@ -13,13 +13,11 @@ return new class extends Migration
     {
         Schema::create('movings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->nullable()->constrained();
             $table->unsignedInteger('sender_id')->nullable();
             $table->foreign('sender_id')->references('id')->on('users');
             $table->unsignedInteger('receiving_id')->nullable();
             $table->foreign('receiving_id')->references('id')->on('users');
-            $table->integer('amount');
-            $table->enum('type',['move','buy'])->default('buy');
+            $table->integer('amount')->nullable();
             $table->timestamps();
         });
     }
