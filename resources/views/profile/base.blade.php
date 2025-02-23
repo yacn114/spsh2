@@ -1,5 +1,8 @@
-
-
+@if ($user->role->name == "superuser")
+@include('profile.navigation')
+@else
+@include("main.navigation")
+@endif
 
 @include('profile.header')
 			<!-- End Navigation -->
@@ -13,12 +16,20 @@
 				<div class="container-fluid">
 										
 					<div class="row">
-@include('profile.navigation')
+
+						@if ($user->role->name == "superuser")
+						@include('profile.right-menu-admin')
+						@else
+						@include('profile.right-menu')
+						
+						@endif
+						
 					
 						
 						<div class="col-lg-9 col-md-9 col-sm-12">
 							
 							<!-- Row -->
+							
 							@yield('content')
 						</div>
 					
