@@ -71,7 +71,7 @@
                     میلادی: {{ \Carbon\Carbon::parse($page->date)->format('Y-m-d') }} |
                     شمسی: {{ \Morilog\Jalali\Jalalian::fromCarbon(\Carbon\Carbon::parse($page->date))->format('Y/m/d') }}<br><hr>
                 @endforeach
-                <hr>
+
 
             @else
 
