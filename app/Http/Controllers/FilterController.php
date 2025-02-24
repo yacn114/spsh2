@@ -12,11 +12,17 @@ class FilterController extends Controller
     public function index(){
         $product_filter = null;
         $category = Category::all();
-        return view("main.filter",["products_filter"=>$product_filter,"category"=>$category]);
+        $categoryCategory = categoryCategory::all();
+
+        return view("main.filter",[
+            "products_filter"=>$product_filter,
+            "category"=>$category,
+            "categoryCategory"=>$categoryCategory,
+        ]);
     }
     public function show(Request $request)
     {
-        
+
         $validatedData = $request->validate([
             'name'      => 'nullable|string|min:2|max:255',
             'levels'    => 'nullable|string|in:level1,level2,level3',
@@ -25,7 +31,7 @@ class FilterController extends Controller
             'category'  => 'nullable|string|exists:categories,slug',
             'catcat'  => 'nullable|string|exists:category_categories,name',
         ]);
-        
+
         $category = Category::all();
         $categoryCategory = categoryCategory::all();
         $product_filter = Product::filter($validatedData);

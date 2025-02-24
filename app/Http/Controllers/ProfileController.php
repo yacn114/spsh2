@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Purchases;
 use Carbon\Carbon;
+use Morilog\Jalali;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -20,7 +22,7 @@ class ProfileController extends Controller
     public function edit(Request $request): View
     {
         $userCount = User::whereDate('created_at', Carbon::today())->count();
-        
+
         $balance = User::all()->sum("balance");
         return view('profile.dashboard', [
             'user' => $request->user(),

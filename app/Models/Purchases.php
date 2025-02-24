@@ -9,4 +9,7 @@ class Purchases extends Model
 {
     /** @use HasFactory<\Database\Factories\PurchasesFactory> */
     use HasFactory;
+    protected $casts = [
+        'created_at' => 'datetime',
+    ];
 }
