@@ -41,3 +41,4 @@
 			
 		<!-- ============================ Call To Action ================================== -->
 		@include('main.footer')
+		@include('profile.footer')

@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
         User::insert([
             "name"=> "yacn",
+            "username"=> "yacn",
             "email"=> "yacn@gmail.com",
             "password"=> bcrypt("123"),
             'email_verified_at' => now(),

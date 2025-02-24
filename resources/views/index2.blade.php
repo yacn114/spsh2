@@ -9,6 +9,7 @@
 <!-- ============================================================== -->
 
 
+
 <!-- ============================ Hero Banner  Start================================== -->
 <div class="hero_banner image-cover" style="background:#00563B url(assets/img/banner-3.jpg) no-repeat;" data-overlay="5">
     <div class="container">
@@ -138,7 +139,7 @@
 
             <div class="row justify-content-center">
                 @foreach ($products_new as $product)
-                    <x-product-card :product="$product" />
+                    <x-product-card :product="$product" /> 
                 @endforeach
             </div>
             
@@ -336,5 +337,8 @@
 </section>
 <!-- ============================ Call To Action End ================================== -->
 
+@section('script')
 
+
+@endsection
 @endsection

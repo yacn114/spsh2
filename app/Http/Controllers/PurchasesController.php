@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePurchasesRequest;
 use App\Http\Requests\UpdatePurchasesRequest;
 use App\Models\Purchases;
+use Illuminate\Support\Facades\Auth;
 
 class PurchasesController extends Controller
 {
@@ -13,7 +14,10 @@ class PurchasesController extends Controller
      */
     public function index()
     {
-        //
+        $purchases = Purchases::where('user_id','=', Auth::user()->id)->get();
+        
+        $user = Auth::user();
+        return view("main.Purchases", ["data_Purchases"=> $purchases,"user"=> $user]);
     }
 
     /**

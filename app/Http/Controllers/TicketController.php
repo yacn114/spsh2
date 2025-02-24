@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
+use App\Models\Purchases;
 use App\Models\Ticket;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
@@ -13,7 +15,9 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        $ticket = Ticket::where('user_id','=',Auth::user()->id)->orderBy('created_at','desc')->get();
+        $user = Auth::user();
+        return view('profile.ticket',['ticket'=> $ticket,"user"=>$user]);
     }
 
     /**
@@ -21,7 +25,8 @@ class TicketController extends Controller
      */
     public function create()
     {
-        //
+        $products = Purchases::where("user_id","=",Auth::user()->id)->get() ?? null;
+        return view("profile.createTicket",["user"=> Auth::user(),"products"=> $products]);
     }
 
     /**
@@ -29,7 +34,19 @@ class TicketController extends Controller
      */
     public function store(StoreTicketRequest $request)
     {
-        //
+        if(Ticket::where("user_id","=",Auth::user()->id)->where('status','=','open')->count() >= 2){
+        return redirect()->back()->with("error","هر کاربر فقط میتواند 2 تیکت باز داشته باشد!");
+    }else{
+        $product = $request->get('product') ?? null;
+        $ticket = Ticket::create([
+            "user_id"=> Auth::user()->id,
+            "product_id"=> $product,
+            'title'=> $request->get('other') ?? null,
+            'description_user'=> $request->get('description'),
+
+        ]);
+        return redirect()->back()->with('success','تیکت شما با موفقیت ثبت شد');
+    }
     }
 
     /**
@@ -37,7 +54,10 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        //
+        if ($ticket->user_id !== Auth::user()->id) {
+            abort(403, 'شما اجازه دسترسی به این تیکت را ندارید.');
+        }
+        return view('profile.response',['ticket'=> $ticket,'user'=> Auth::user()]);
     }
 
     /**

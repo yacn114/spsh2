@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreMovingRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreMovingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -21,8 +22,10 @@ class StoreMovingRequest extends FormRequest
      */
     public function rules(): array
     {
+        $balance = Auth::user()->balance;
         return [
-            //
+            "balance"=> ["max:$balance","required","min:1000","integer"],
+            "username"=> ["max:15","required","exists:users,username","string"],
         ];
     }
 }

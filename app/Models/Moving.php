@@ -9,4 +9,5 @@ class Moving extends Model
 {
     /** @use HasFactory<\Database\Factories\MovingFactory> */
     use HasFactory;
+    protected $guarded = [];
 }

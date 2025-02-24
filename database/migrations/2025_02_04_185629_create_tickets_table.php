@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->nullable();
+            $table->foreignId('product_id')->nullable()->constrained();
             $table->text('description_user');
             $table->text('description_admin')->nullable();
             $table->enum('status', ['open', 'closed'])->default('open');

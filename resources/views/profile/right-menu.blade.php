@@ -24,14 +24,14 @@
         
         <div class="d-navigation">
             <ul id="side-menu">
-                <li class="active"><a href="{% url 'account:home' %}"><i class="fas fa-th"></i>داشبورد</a></li>
-                <li><a href="{% url 'Wallet:wallet' %}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>کیف پول ({{number_format($user->balance)}}) تومان</a></li>
-
-                <li><a href="{% url "ticket:ticket" %}"><i class="fas fa-comment"></i>تیکت</a></li>
+                <li><a href="{{route('dashboard')}}"><i class="fas fa-th"></i>داشبورد</a></li>
+                <li><a href="{{route('wallet')}}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>کیف پول ({{number_format($user->balance)}}) تومان</a></li>
                 <li>
-                    <a href="{% url 'account:courses' %}"><i class="fas fa-shopping-cart"></i>دوره های خریداری شده</a>
+                    <a href="{{route('courses')}}"><i class="fas fa-shopping-cart"></i>دوره های خریداری شده</a>
                 
                 </li>
+
+                <li><a href="{{route('ticket')}}"><i class="fas fa-comment"></i>تیکت</a></li>
                 <li>
                     <a href="{% url 'account_email' %}"><i class="fas fa-envelope"></i>تغییر ایمیل</a>
                     
@@ -46,9 +46,10 @@
                     
                 </li>
                 <li>
-                    <form action="{% url 'account:logout' %}" method="post">
-                        
-                        <a href="{% url 'account_change_password' %}" class="alert-danger" style="color: red"><i class="fa fa-sign-out-alt"></i>خروج</span></a>
+                    <form action="{{route('logout')}}" method="post">
+                        @csrf
+                        @method("DELETE")
+                        <a class="alert-danger" style="color: red"><i class="fa fa-sign-out-alt"></i><button style="background: none;border: none;color: red" type="submit">خروج</button></span></a>
 
                     </form>
                     

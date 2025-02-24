@@ -57,7 +57,7 @@
                             <li><div class="elsio_ic"><i class="fa fa-user text-danger"></i></div><div class="elsio_tx">{{ $product->student_count }}</div></li>
                             <li><div class="elsio_ic"><i class="fa fa-eye text-success"></i></div><div class="elsio_tx">{{ number_format($product->view) }}</div></li>
                             <li><div class="elsio_ic"><i class="fa fa-star text-warning"></i></div><div class="elsio_tx">4.7</div></li>
-                            <li><div class="crs_linkview"><a href="{{route('book',$product->slug)}}" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div></li>
+                            
                         </ul>
                         
                         

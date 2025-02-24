@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMovingRequest;
 use App\Http\Requests\UpdateMovingRequest;
 use App\Models\Moving;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class MovingController extends Controller
 {
@@ -13,7 +15,9 @@ class MovingController extends Controller
      */
     public function index()
     {
-        //
+        $moving = Moving::where('sender_id','=',Auth::user()->id)->orWhere('receiving_id','=',Auth::user()->id)->get();
+        $user = Auth::user();
+        return view('profile.move', ['moves'=> $moving,'user'=> $user]);
     }
 
     /**
@@ -29,7 +33,14 @@ class MovingController extends Controller
      */
     public function store(StoreMovingRequest $request)
     {
-        //
+        
+         Moving::create([
+            'sender_id'=> Auth::user()->id,
+            'receiving_id'=> User::where('username','=',$request->get('username') )->first()->id,
+         ]);
+         User::find(Auth::user()->id)->update(['balance'=>User::find(Auth::user()->id)->balance - $request->get('balance')]);
+         User::where('username','=',$request->get('username'))->update(['balance'=>User::where('username','=',$request->get('username'))->first()->balance + $request->get('balance')]);
+         return redirect()->back()->with('success','با موفقیت انتقال داده شد!');
     }
 
     /**

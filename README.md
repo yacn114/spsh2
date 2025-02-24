@@ -6,6 +6,6 @@
 <li>forget password</li>
 <li>dashboard ...</li>
 <li>add permission role (package or manually ?)</li>
-<li>edit moving db</>
-<li>join خبرنامه</li>li
+<li>edit moving db</li>
+<li>join خبرنامه</li>
 </ul>

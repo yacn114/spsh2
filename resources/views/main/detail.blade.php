@@ -259,8 +259,9 @@
 									</ul>
 								</div>
 								<div class="ed_view_link">
-									
-									<a href="{{route('book',$product->slug)}}" class="btn theme-bg enroll-btn">ثبت نام<i class="ti-angle-left"></i></a>
+									@include('profile.messages')
+
+									<a href="{{route('book',$product)}}" class="btn theme-bg enroll-btn">ثبت نام<i class="ti-angle-left"></i></a>
 								</div>
 								
 							</div>

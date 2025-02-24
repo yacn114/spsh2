@@ -26,29 +26,14 @@
             <ul id="side-menu">
                 <li class="active"><a href="{% url 'account:home' %}"><i class="fas fa-th"></i>داشبورد</a></li>
                 <li><a href="{% url 'Wallet:wallet' %}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>اضافه کردن موجودی به کاربر</a></li>
+                <li><a href="{% url 'Wallet:wallet' %}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>پاسخ دادن به تیکت های کاربران (0)</a></li>
 
-                <li><a href="{% url "ticket:ticket" %}"><i class="fas fa-comment"></i>تیکت</a></li>
+
                 <li>
-                    <a href="{% url 'account:courses' %}"><i class="fas fa-shopping-cart"></i>دوره های خریداری شده</a>
-                
-                </li>
-                <li>
-                    <a href="{% url 'account_email' %}"><i class="fas fa-envelope"></i>تغییر ایمیل</a>
-                    
-                </li>
-                <li>
-                    <a href="{% url 'account:status' %}"><i class="fas fa-history"></i>تاریخچه ی خرید و انتقالات</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="{% url 'account_change_password' %}"><i class="fas fa-key ml-1 rotate-img"></i>تغییر رمز عبور</span></a>
-                    
-                </li>
-                <li>
-                    <form action="{% url 'account:logout' %}" method="post">
-                        
-                        <a href="{% url 'account_change_password' %}" class="alert-danger" style="color: red"><i class="fa fa-sign-out-alt"></i>خروج</span></a>
+                    <form action="{{route('logout')}}" method="post">
+                        @csrf
+                        @method("DELETE")
+                        <a class="alert-danger" style="color: red"><i class="fa fa-sign-out-alt"></i><button style="background: none;border: none;color: red" type="submit">خروج</button></span></a>
 
                     </form>
                     

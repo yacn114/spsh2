@@ -12,4 +12,9 @@ class Purchases extends Model
     protected $casts = [
         'created_at' => 'datetime',
     ];
+    protected $guarded = [];
+    public function product(){
+        return $this->belongsTo(Product::class, 'product_id');
+    }
+    
 }

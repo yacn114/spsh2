@@ -1,4 +1,5 @@
 <div class="col-xl-{{$size}} col-lg-{{$size}} col-md-12 col-sm-12">
+    
     <div class="crs_grid_list">
         
         <div class="crs_grid_list_thumb">
@@ -28,8 +29,17 @@
                         <li><i class="fa fa-user"></i><span>{{$product->student_count}} دانشجو</span></li>
                         <li><i class="fa fa-eye"></i><span>{{number_format($product->view)}} بازدید</span></li>
                         <li><i class="fa fa-level-up-alt"></i><span>{{$product->tutorial_level}}</span></li>
-                        <li><i class="fa fa-globe"></i><span>{{$product->language}}</span></li>
                         
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="crs_lt_103">
+                <div class="crs_info_detail">
+                    <ul>
+                  
+            <li><i class="fa fa-globe"></i><span>{{$product->language}}</span></li>
                     </ul>
                 </div>
             </div>
@@ -57,9 +67,7 @@
                 </div>
             </div>
         </div>
-        <div class="crs_fl_last">
-            <div class="crs_linkview"><a href="{{route('book',$product->slug)}}" class="btn btn-success text-light m-2">ثبت نام</a></div>
-        </div>
 
     </div>
+
 </div>
