@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\{CategoryController, HomeController,ProfileController,SearchController,FilterController,CommentController, ProductController,BookController, MovingController, TicketController};
-use App\Http\Controllers\Auth\{AuthenticatedSessionController,RegisteredUserController};
+use App\Http\Controllers\Auth\{AuthenticatedSessionController, PasswordResetLinkController, RegisteredUserController};
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\PurchasesController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +30,9 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('ticket', [TicketController::class,'index'])->name('ticket');
     Route::get('newTicket', [TicketController::class,'create'])->name('newTick');
     Route::post('ticketStore', [TicketController::class,'store'])->name('ticketStore');
-    Route::get('response/{ticket}', [TicketController::class,'show'])->name('response'); // not writed
+    Route::get('response/{ticket}', [TicketController::class,'show'])->name('response');
+    Route::get('Reset-password', [PasswordResetLinkController::class,'create'])->name('Reset-password');
+    Route::patch('Password-Reset', [PasswordResetLinkController::class,'store'])->name('Password-Reset');
 });
 Route::get('cat/{slug}', [])->name('cat'); // not writed
 Route::get('complete/', [])->name('complete'); // not writed

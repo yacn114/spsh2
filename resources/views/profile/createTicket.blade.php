@@ -49,7 +49,7 @@
                     
         
                                 <div class="form-group smalls">
-                                    <button class="btn btn-warning"  type="submit">ثبت تیکت</button>
+                                    <button class="btn btn-warning" type="submit">ثبت تیکت</button>
                                 </div>
                             </form>
                         </div>

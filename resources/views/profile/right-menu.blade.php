@@ -33,7 +33,7 @@
 
                 <li><a href="{{route('ticket')}}"><i class="fas fa-comment"></i>تیکت</a></li>
                 <li>
-                    <a href="{% url 'account_email' %}"><i class="fas fa-envelope"></i>تغییر ایمیل</a>
+                    <a href="{{route('Reset-password')}}"><i class="fas fa-envelope"></i>تغییر گذرواژه</a>
                     
                 </li>
                 <li>

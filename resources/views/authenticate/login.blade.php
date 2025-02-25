@@ -45,12 +45,11 @@
                 </span>
 
 
-                <div class="p-t-31 p-b-9">
+
+                <div class="wrap-input100 validate-input" data-validate = "Username is required">
                     <span class="txt1 myfont">
                         ایمیل
                     </span>
-                </div>
-                <div class="wrap-input100 validate-input" data-validate = "Username is required">
                     <input type="text" name="email" class="input100" required placeholder="ایمیل خود رو وارد کن">
 
                     <span class="focus-input100"></span>
@@ -65,12 +64,25 @@
                         یادت رفته؟
                     </a>
                 </div>
+                <br>
+                
                 <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                    <span class="txt1 myfont">
+                        گذرواژه
+                    </span>
+                    
                     <input type="password" name="password" class="input100" required placeholder="گذرواژه خودت رو وارد کن">
                     <span class="focus-input100"></span>
                 </div>
                 @csrf
-
+                
+                <div class="wrap-input100 validate-input mt-3" data-validate = "Password is required">
+                    <span class="txt1 myfont">
+                    مرا بخاطر بسپار
+                    </span>
+                    <input type="checkbox" name="remeber"> 
+                    
+                </div>
                 <div class="container-login100-form-btn m-t-17">
 
                     <button class="login100-form-btn myfont" type="submit">sigin</button>
