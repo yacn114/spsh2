@@ -57,7 +57,7 @@ class TicketController extends Controller
         if ($ticket->user_id !== Auth::user()->id) {
             abort(403, 'شما اجازه دسترسی به این تیکت را ندارید.');
         }
-        return view('profile.response',['ticket'=> $ticket,'user'=> Auth::user()]);
+        return view('profile.response',['ticket'=> $ticket]);
     }
 
     /**

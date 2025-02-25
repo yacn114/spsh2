@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\{CategoryController, HomeController,ProfileController,SearchController,FilterController,CommentController, ProductController,BookController, MovingController, TicketController};
+use App\Http\Controllers\{CategoryController, HomeController,ProfileController,SearchController,FilterController,CommentController, ProductController,BookController, MovingController, TicketController,EmailController,PurchasesController};
+use App\Http\Controllers\crud\CategoryController as CategoryCrud;
 use App\Http\Controllers\Auth\{AuthenticatedSessionController, PasswordResetLinkController, RegisteredUserController};
-use App\Http\Controllers\EmailController;
-use App\Http\Controllers\PurchasesController;
+use App\Http\Middleware\AuthUserMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware([\App\Http\Middleware\PageViewMiddleware::class])->group(function () {
@@ -20,7 +20,7 @@ Route::get('category/{category:slug}', [CategoryController::class,'index'])->nam
 Route::get('filter/', [FilterController::class,'index'])->name('filter');
 Route::get('filter/filter', [FilterController::class,'show'])->name('filter_show');
 Route::get('search/', [SearchController::class,'store'])->name('search');
-Route::prefix('dashboard')->middleware(['auth'])->group(function () {
+Route::prefix('dashboard')->middleware(['auth',AuthUserMiddleware::class])->group(function () {
     Route::get('/', [ProfileController::class, 'edit'])->name('dashboard');
     Route::get('courses', [PurchasesController::class,'index'])->name("courses");
     Route::delete("logout", [ProfileController::class,'destroy'])->name('logout');
@@ -35,7 +35,16 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('history', [ProfileController::class,'history'])->name('history');
     Route::get('addBalance', [ProfileController::class,"addBalance"])->name("addBalance");
     Route::patch('Add-Balance', [ProfileController::class,'editBalance'])->name('edit-balance');
+    Route::get('responseAdmin', [ProfileController::class,'AdminTicket'])->name('AdminTicket');
+    Route::get('responseAdmin2/{ticket}', [ProfileController::class,'responseAdmin2'])->name('responseAdmin2');
+    Route::patch('StoreResponse', [ProfileController::class,'StoreResponse'])->name('StoreResponse');
+    // crud
+    Route::get('crud/Category', [CategoryCrud::class,'create'])->name('CategoryCrudCreate');
+    Route::post('crud/CategoryStore', [CategoryCrud::class,'store'])->name('CategoryCrudStore');
+    
+    // end crud
     Route::patch('Password-Reset', [PasswordResetLinkController::class,'store'])->name('Password-Reset'); // not writed
+
 });
 Route::get('cat/{slug}', [])->name('cat'); // not writed
 Route::get('complete/', [])->name('complete'); // not writed

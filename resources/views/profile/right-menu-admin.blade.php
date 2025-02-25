@@ -24,9 +24,14 @@
         
         <div class="d-navigation">
             <ul id="side-menu">
-                <li class="active"><a href="{% url 'account:home' %}"><i class="fas fa-th"></i>داشبورد</a></li>
+                <li class="active"><a href="{{route('dashboard')}}"><i class="fas fa-th"></i>داشبورد</a></li>
                 <li><a href="{{route('addBalance')}}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>اضافه کردن موجودی به کاربر</a></li>
-                <li><a href="{% url 'Wallet:wallet' %}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>پاسخ دادن به تیکت های کاربران (0)</a></li>
+                <li><a href="{{route('AdminTicket')}}" style="font-family: sans-serif;"><i class="fas fa-comment"></i>پاسخ دادن به تیکت های کاربران ({{$ticket}})</a></li>
+                <li><a href="{{route('CategoryCrudCreate')}}" style="font-family: sans-serif;"><i class="fas fa-plus"></i>ساخت دسته بندی</a></li>
+                <li><a href="{{route('addBalance')}}" style="font-family: sans-serif;"><i class="fas fa-plus-circle"></i>ساخت محصول</a></li>
+                <li><a href="{{route('addBalance')}}" style="font-family: sans-serif;"><i class="fas fa-plus"></i>اطلاعات کلی سایت</a></li>
+                <li><a href="{{route('addBalance')}}" style="font-family: sans-serif;"><i class="fas fa-plus-circle"></i>نقش و دسترسی</a></li>
+                <li><a href="{{route('addBalance')}}" style="font-family: sans-serif;"><i class="fas fa-plus"></i>احتمالا عکس</a></li>
 
 
                 <li>

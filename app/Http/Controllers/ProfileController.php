@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\addBalanceRequest;
+use App\Http\Requests\StoreResponseRequest;
 use App\Models\Purchases;
 use Carbon\Carbon;
 use Morilog\Jalali;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\CategoryCategory;
 use App\Models\Moving;
+use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -76,12 +79,13 @@ class ProfileController extends Controller
     public function edit(Request $request): View
     {
         $userCount = User::whereDate('created_at', Carbon::today())->count();
-
+        
         $balance = User::all()->sum("balance");
         return view('profile.dashboard', [
-            'user' => $request->user(),
+            
             'balance' => $balance,
             'userCount'=>$userCount,
+        
         ]);
     }
 
@@ -120,5 +124,21 @@ class ProfileController extends Controller
         // $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+    public function AdminTicket(){
+        $tickets = Ticket::where('status' ,'=','open')->get();
+        return view('profile.responseAdmin',['ticket'=> $tickets]);
+    }
+    public function responseAdmin2(){
+        $ticket = Ticket::where('status','=','open')->firstOrFail();
+        return view('profile.responseAdmin2',['ticket'=>$ticket]);
+    }
+
+    public function StoreResponse(StoreResponseRequest $request, Ticket $ticket){
+    Ticket::where('id','=', $request->get('ticket'))->update([
+        'status'=> 'closed',
+        'description_admin'=> $request->get('response'),
+    ]);
+    return redirect()->back()->with('success','با موفقیت پاسخ ثبت شد');
     }
 }

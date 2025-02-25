@@ -17,7 +17,7 @@ class MovingController extends Controller
     {
         $moving = Moving::where('sender_id','=',Auth::user()->id)->orWhere('receiving_id','=',Auth::user()->id)->get();
         $user = Auth::user();
-        return view('profile.move', ['moves'=> $moving,'user'=> $user]);
+        return view('profile.move', ['moves'=> $moving]);
     }
 
     /**

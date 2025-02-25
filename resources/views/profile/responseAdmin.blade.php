@@ -5,7 +5,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12 pb-4">
         <div class="alert alert-light col-12" style="border-radius:10px;" role="alert">
         <div class="table-responsive col-8">
-            <div class="row"><h2>تیکت های شما &nbsp;</h2> <a class="btn btn-info" href="{{route('newTick')}}">اضافه کردن تیکت جدید</a></div>
+            <div class="row"><h2>تیکت ها</h2></div>
             
             <table class="table dash_list">
                 <thead>
@@ -29,9 +29,9 @@
                     <td><a href="#"><h6>{{$tickets->title}}</h6></a></td>
                         <td><span class="trip" style="font-size:15px">{{$tickets->status}}</span></td>
 
-                        <td><a href="{{route('response',$tickets)}}"><button class="btn btn-success" @if ($tickets->status == "open")
+                        <td><a href="{{route('responseAdmin2',$tickets)}}"><button class="btn btn-success" @if ($tickets->status == "closed")
                             {{"disabled"}}
-                        @endif>جزيیات</button></a></td>
+                        @endif>پاسخ دادن</button></a></td>
                         
                     </tr>
                 @endforeach
