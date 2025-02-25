@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\addBalanceRequest;
 use App\Models\Purchases;
 use Carbon\Carbon;
 use Morilog\Jalali;
@@ -13,8 +15,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
-use function Symfony\Component\Clock\now;
-
 class ProfileController extends Controller
 {
     /**
@@ -23,7 +23,45 @@ class ProfileController extends Controller
     
     public function addBalance(){
         $user = Auth::user();
+
         return view("profile.addBalance",compact("user"));
+    }
+    public function editBalance(Request $request){
+        if($request->has("delete")){
+            $user = User::where('username', $request->get('username'))->first();
+            $validatedData = $request->validate([
+                "amount" => [
+                    "integer",
+                    "required",
+                    function ($attribute, $value, $fail) use ($user) {
+                        if (!$user) {
+                            $fail("The selected username is invalid.");
+                            return;
+                        }
+                        if ($value > $user->balance) {
+                            $fail("The amount must not exceed the user's balance ({$user->balance}).");
+                        }
+                    }
+                ],
+                "username" => ["string", "required", "exists:users,username"],
+            ]);
+
+            $balance = User::where("username",'=',$request->get("username"))->first();
+            $balance->balance = $balance->balance - $request->get('amount');
+            $balance->save();
+            $users= $request->get('username');
+            return redirect()->back()->with('error',"کم شد از $users");
+
+        }elseif($request->has("add")){
+            $balance = User::where("username",'=',$request->get("username"))->first();
+            $balance->balance = $balance->balance + $request->get('amount');
+            $balance->save();
+            $users= $request->get('username');
+            return redirect()->back()->with('success',"انتقال داده شد به $users");
+
+        }else{
+            return redirect()->back()->with("error","لطفا یکی از ایتم های حذف یا اضافه کردن رو انتخاب کن");
+        }
     }
 
 

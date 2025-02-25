@@ -16,9 +16,9 @@
     @include('profile.messages')
                 <div class="row justify-content-center">
                     <div class="col-xl-12 col-lg-12 col-md-12">
-                        <form method="post" action="{{route('Password-Reset')}}">
+                        <form method="post" action="{{route('edit-balance')}}">
                             @csrf
-                            
+                            @method('patch')
                             <div class="form-group smalls">
                                 <label>نام کاربری شخص</label>
                                 <input type="text" name="username" class="form-control">

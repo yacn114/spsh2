@@ -34,6 +34,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('Reset-password', [PasswordResetLinkController::class,'create'])->name('Reset-password');
     Route::get('history', [ProfileController::class,'history'])->name('history');
     Route::get('addBalance', [ProfileController::class,"addBalance"])->name("addBalance");
+    Route::patch('Add-Balance', [ProfileController::class,'editBalance'])->name('edit-balance');
     Route::patch('Password-Reset', [PasswordResetLinkController::class,'store'])->name('Password-Reset'); // not writed
 });
 Route::get('cat/{slug}', [])->name('cat'); // not writed
