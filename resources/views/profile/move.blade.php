@@ -11,7 +11,7 @@
 
                         <div class="form-group smalls">
                             <a href="{% url 'Wallet:pay_afzayesh' %}"><button class="btn theme-bg text-white">افزایش موجودی</button></a>
-                          <a href="{% url 'account:status' %}"> <button class="btn btn-info text-white">تاریخچه موجودی</button></a>
+                          <a href="{{route('history')}}"> <button class="btn btn-info text-white">تاریخچه موجودی</button></a>
                             
                         </div>
 

@@ -25,7 +25,7 @@
         <div class="d-navigation">
             <ul id="side-menu">
                 <li class="active"><a href="{% url 'account:home' %}"><i class="fas fa-th"></i>داشبورد</a></li>
-                <li><a href="{% url 'Wallet:wallet' %}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>اضافه کردن موجودی به کاربر</a></li>
+                <li><a href="{{route('addBalance')}}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>اضافه کردن موجودی به کاربر</a></li>
                 <li><a href="{% url 'Wallet:wallet' %}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>پاسخ دادن به تیکت های کاربران (0)</a></li>
 
 

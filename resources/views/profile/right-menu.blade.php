@@ -37,14 +37,11 @@
                     
                 </li>
                 <li>
-                    <a href="{% url 'account:status' %}"><i class="fas fa-history"></i>تاریخچه ی خرید و انتقالات</a>
+                    <a href="{{route('history')}}"><i class="fas fa-history"></i>تاریخچه ی خرید و انتقالات</a>
                     
                 </li>
                 
-                <li>
-                    <a href="{% url 'account_change_password' %}"><i class="fas fa-key ml-1 rotate-img"></i>تغییر رمز عبور</span></a>
-                    
-                </li>
+             
                 <li>
                     <form action="{{route('logout')}}" method="post">
                         @csrf

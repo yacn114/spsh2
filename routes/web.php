@@ -32,7 +32,9 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::post('ticketStore', [TicketController::class,'store'])->name('ticketStore');
     Route::get('response/{ticket}', [TicketController::class,'show'])->name('response');
     Route::get('Reset-password', [PasswordResetLinkController::class,'create'])->name('Reset-password');
-    Route::patch('Password-Reset', [PasswordResetLinkController::class,'store'])->name('Password-Reset');
+    Route::get('history', [ProfileController::class,'history'])->name('history');
+    Route::get('addBalance', [ProfileController::class,"addBalance"])->name("addBalance");
+    Route::patch('Password-Reset', [PasswordResetLinkController::class,'store'])->name('Password-Reset'); // not writed
 });
 Route::get('cat/{slug}', [])->name('cat'); // not writed
 Route::get('complete/', [])->name('complete'); // not writed

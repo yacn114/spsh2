@@ -5,6 +5,7 @@ use App\Models\Purchases;
 use Carbon\Carbon;
 use Morilog\Jalali;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Moving;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -19,6 +20,21 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
+    
+    public function addBalance(){
+        $user = Auth::user();
+        return view("profile.addBalance",compact("user"));
+    }
+
+
+     public function history(Request $request){
+        $user = Auth::user();
+        $moves = Moving::where("sender_id", '=',$user->id)->orWhere("receiving_id", '=',$user->id)->get();
+        $buys = Purchases::where("user_id",'=', $user->id)->get();
+        return view("profile.history", compact("user","moves","buys"));
+    }
+
+
     public function edit(Request $request): View
     {
         $userCount = User::whereDate('created_at', Carbon::today())->count();

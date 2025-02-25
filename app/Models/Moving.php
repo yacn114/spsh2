@@ -10,4 +10,10 @@ class Moving extends Model
     /** @use HasFactory<\Database\Factories\MovingFactory> */
     use HasFactory;
     protected $guarded = [];
+    public function sender(){
+        return $this->belongsTo(User::class,"sender_id");
+    }
+    public function receiver(){
+        return $this->belongsTo(User::class,"receiving_id");
+    }
 }
