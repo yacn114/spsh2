@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryCrudRequest;
-use App\Http\Requests\StoreCategoryRequest;
-use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
+use App\Models\categoryCategory as cc;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -64,16 +65,40 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $categories= Category::all();
+        $cat =  cc::all();
+        
+        $catcat = cc::where("id",'=',$category->parentCategory)->firstOrFail();
+        // dd($catcat);
+        return view("crud.editCategory",[
+            "category"=> $category,
+            "catcat"=>$cat,
+            "cate"=>$catcat,
+            "categories"=> $categories,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function update(Request $request, Category $category)
     {
-        //
+        $validated = $request->validate([
+            "name" => ["required", "string"],
+            "slug" => ["required", "string", Rule::unique('categories', 'slug')->ignore($category->id)], 
+            "category" => ["nullable", "exists:categories,id"],
+            "other" => ["nullable", "exists:category_categories,id"],
+        ]);
+        $category->update([
+            "name"=> $request->get("name"),
+            "slug"=> $request->get("slug"),
+            "category_id"=> $request->get("category"),
+            "parentCategory"=> $request->get("other"),
+        ]);
+
+        return redirect()->back()->with('success', 'دسته‌بندی با موفقیت به‌روز شد!');
     }
+    
 
     /**
      * Remove the specified resource from storage.

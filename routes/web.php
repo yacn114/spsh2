@@ -53,7 +53,11 @@ Route::prefix('dashboard')->middleware(['auth',AuthUserMiddleware::class])->grou
     Route::prefix('')->middleware(PermissionControlMidlleware::class .':update-category')->group(function () {
         Route::get('list-category', [CategoryController::class,'show'])->name('list-category');
     });
+    Route::patch('update-category/{category}', [CategoryController::class,'update'])->name('update-category')->middleware(PermissionControlMidlleware::class.":update-category");
     Route::delete('/delete/category/{category}', [CategoryController::class,'destroy'])->name('destroycategory')->middleware(PermissionControlMidlleware::class.":delete-category");
+    Route::get('edit/{category}', [CategoryController::class,'edit'])->name('editCategory')->middleware(PermissionControlMidlleware::class.":update-category");
+ 
+ 
     Route::prefix('')->middleware(PermissionControlMidlleware::class .':create-product')->group(function () {
     Route::get('createProduct', [ProductController::class,'create'])->name('createProduct');
     Route::post('storeProduct', [ProductController::class,'store'])->name('storeProduct');

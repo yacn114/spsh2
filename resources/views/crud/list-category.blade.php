@@ -6,7 +6,7 @@
     <div class="col-xl-12 col-lg-12 col-md-12">
         <div class="alert alert-light col-12" style="border-radius:10px;" role="alert">
             <div class="table-responsive col-8">
-                <div class="row"><h2>تیکت ها</h2></div>
+                <div class="row"><h2>دسته بندی ها</h2></div>
                 @include('profile.messages')
                 <table class="table dash_list">
                     <thead>
@@ -32,7 +32,7 @@
     
                             <td>
                                 <div class="row">
-                                <a class="m-2" href="{{route('responseAdmin2',$categories->id)}}"><button class="btn btn-warning">ویرایش</button></a>
+                                <a class="m-2" href="{{route("editCategory",$categories->id)}}"><button class="btn btn-info">ویرایش</button></a>
                                 <form action="{{route('destroycategory',$categories->id)}}" class="m-2" method="post">@csrf @method("DELETE")<button class="btn btn-danger" type="submit">حذف</button></a></form>
                             </div>
                         
