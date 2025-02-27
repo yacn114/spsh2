@@ -29,7 +29,7 @@
                     <td><a href="#"><h6>{{$tickets->title}}</h6></a></td>
                         <td><span class="trip" style="font-size:15px">{{$tickets->status}}</span></td>
 
-                        <td><a href="{{route('responseAdmin2',$tickets)}}"><button class="btn btn-success" @if ($tickets->status == "closed")
+                        <td><a href="{{route('responseAdmin2',$tickets)}}"><button class="btn btn-info" @if ($tickets->status == "closed")
                             {{"disabled"}}
                         @endif>پاسخ دادن</button></a></td>
                         

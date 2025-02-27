@@ -22,7 +22,8 @@
 
                 <div class="col-lg-5 col-md-5">
                     <div class="footer_widget">
-                        <img src="{{$data->logo}}" class="img-footer small mb-2" style="border-radius: 50%;" alt="opozex-logo" />
+                        
+                        <img src="{{ asset('storage/' . $data->logo) }}" class="img-footer small mb-2" style="border-radius: 50%;" alt="opozex-logo"  />
 
                         <br>
                         <br>

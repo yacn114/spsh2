@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('site_data', function (Blueprint $table) {
             $table->id();
-            $table->string('nameE');
-            $table->string('nameF');
-            $table->string('logo');
-            $table->string('about');
-            $table->string('address');
-            $table->string('phone');
-            $table->string('email');
+            $table->string('nameE')->nullable();
+            $table->string('nameF')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('about')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
             $table->timestamps();
         });
     }

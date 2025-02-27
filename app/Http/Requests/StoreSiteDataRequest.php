@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreSiteDataRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreSiteDataRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -21,8 +22,26 @@ class StoreSiteDataRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
-    }
+        
+            return [
+                'nameE' => ['nullable', 'string', 'max:255'],
+                'nameF' => ['nullable', 'string', 'max:255'],
+                'logo' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:2048'],
+                'about' => ['nullable', 'string'],
+                'address' => ['nullable', 'string', 'max:500'],
+                'phone' => ['nullable', 'string', 'regex:/^09[0-9]{9}$/'],
+                'email' => ['nullable', 'email', 'max:255'],
+            ];
+        }
+    
+        public function messages(): array
+        {
+            return [
+                'nameE.required' => 'نام انگلیسی سایت الزامی است.',
+                'nameF.required' => 'نام فارسی سایت الزامی است.',
+                'logo.image' => 'فرمت فایل لوگو باید تصویر باشد.',
+                'phone.regex' => 'فرمت شماره تلفن نامعتبر است.',
+                'email.email' => 'فرمت ایمیل نامعتبر است.',
+            ];
+        }
 }

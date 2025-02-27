@@ -9,29 +9,29 @@
              @else
              {{"hi my owner"}}
              @endif</span> 
-            <div class="elso_syu89">
-                <ul>
-                    <li><a href="https://www.twitter.com/opozex"><i class="ti-twitter"></i></a></li>
-                    <li><a href="https://www.instagram.com/opozex"><i class="ti-instagram"></i></a></li>
-                </ul>
+<hr>
             </div>
-            <div class="elso_syu77">
-                <div class="one_third"><div class="one_45ic text-warning bg-light-warning"><i class="fas fa-star"></i></div><span>امتیازات</span></div>
-                <div class="one_third"><a href="{% url 'account:courses' %}"><div class="one_45ic text-success bg-light-success"><i class="fas fa-file-invoice"></i></div><span>دوره ها</span></a></div>
-                <div class="one_third"><div class="one_45ic text-purple bg-light-purple"><i class="fas fa-user"></i></div><span>هنرجویان</span></div>
-            </div>
-        </div>
         
         <div class="d-navigation">
             <ul id="side-menu">
-                <li class="active"><a href="{{route('dashboard')}}"><i class="fas fa-th"></i>داشبورد</a></li>
-                <li><a href="{{route('addBalance')}}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>اضافه کردن موجودی به کاربر</a></li>
-                <li><a href="{{route('AdminTicket')}}" style="font-family: sans-serif;"><i class="fas fa-comment"></i>پاسخ دادن به تیکت های کاربران ({{$ticket}})</a></li>
-                <li><a href="{{route('CategoryCrudCreate')}}" style="font-family: sans-serif;"><i class="fas fa-plus"></i>ساخت دسته بندی</a></li>
-                <li><a href="{{route('addBalance')}}" style="font-family: sans-serif;"><i class="fas fa-plus-circle"></i>ساخت محصول</a></li>
-                <li><a href="{{route('addBalance')}}" style="font-family: sans-serif;"><i class="fas fa-plus"></i>اطلاعات کلی سایت</a></li>
-                <li><a href="{{route('addBalance')}}" style="font-family: sans-serif;"><i class="fas fa-plus-circle"></i>نقش و دسترسی</a></li>
-                <li><a href="{{route('addBalance')}}" style="font-family: sans-serif;"><i class="fas fa-plus"></i>احتمالا عکس</a></li>
+                
+                
+                <li @if (Route::is('dashboard')) class="active" @endif><a href="{{route('dashboard')}}"><i class="fas fa-th"></i>داشبورد</a></li>
+                <li @if (Route::is('addBalance')) class="active" @endif><a href="{{route('addBalance')}}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>اضافه کردن موجودی به کاربر</a></li>
+                <li @if (Route::is('AdminTicket')) class="active" @endif><a href="{{route('AdminTicket')}}" style="font-family: sans-serif;"><i class="fas fa-comment"></i>پاسخ دادن به تیکت های کاربران ({{$ticketss}})</a></li>
+                <hr>
+                <li @if (Route::is('CategoryCrudCreate')) class="active" @endif><a href="{{route('CategoryCrudCreate')}}" style="font-family: sans-serif;"><i class="fas fa-shopping-basket"></i>ساخت دسته بندی</a></li>
+                <li @if (Route::is('list-category')) class="active" @endif><a href="{{route('list-category')}}" style="font-family: sans-serif;"><i class="fas fa-shopping-basket"></i>لیست دسته بندی</a></li>
+                <hr>
+                <li @if (Route::is('createProduct')) class="active" @endif><a href="{{route('createProduct')}}" style="font-family: sans-serif;"><i class="fas fa-plus-circle"></i>ساخت محصول</a></li>
+                <li @if (Route::is('createProduct')) class="active" @endif><a href="{{route('createProduct')}}" style="font-family: sans-serif;"><i class="fas fa-plus-circle"></i>لیست محصول</a></li>
+                <hr>
+                <li @if (Route::is('createData')) class="active" @endif><a href="{{route('createData')}}" style="font-family: sans-serif;"><i class="fas fa-plus"></i>اطلاعات کلی سایت</a></li>
+                <hr>
+                <li @if (Route::is('createRole')) class="active" @endif><a href="{{route('createRole')}}" style="font-family: sans-serif;"><i class="fas fa-plus-circle"></i>نقش و دسترسی</a></li>
+                <li @if (Route::is('createRole')) class="active" @endif><a href="{{route('createRole')}}" style="font-family: sans-serif;"><i class="fas fa-plus-circle"></i>لیست نقش و دسترسی</a></li>
+                <hr>
+                <li @if (Route::is('addBalance')) class="active" @endif><a href="{{route('addBalance')}}" style="font-family: sans-serif;"><i class="fas fa-plus"></i>احتمالا عکس</a></li>
 
 
                 <li>

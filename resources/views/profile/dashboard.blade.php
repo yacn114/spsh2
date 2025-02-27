@@ -28,7 +28,7 @@
 
     <div class="col-lg-12 col-md-12 col-sm-12 pb-4">
         <div class="alert alert-light col-12" style="border-radius:10px;" role="alert">
-            @if ($user->role->name == "superuser")
+            @if ($user->role->HasPermission('create-category') || $user->role->HasPermission('create-product') || $user->role->HasPermission('create-role') || $user->role->HasPermission('create-siteData'))
 
                 <div class="row g-4">
                     <!-- کارت‌های اطلاعات -->

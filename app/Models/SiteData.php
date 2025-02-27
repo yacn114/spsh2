@@ -9,4 +9,5 @@ class SiteData extends Model
 {
     /** @use HasFactory<\Database\Factories\SiteDataFactory> */
     use HasFactory;
+    protected $guarded = [];
 }

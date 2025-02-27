@@ -13,6 +13,6 @@ class SiteDataSeeder extends Seeder
      */
     public function run(): void
     {
-        SiteData::factory()->count(10)->create();
+        SiteData::factory()->count(1)->create();
     }
 }

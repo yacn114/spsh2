@@ -10,7 +10,7 @@
         <nav id="navigation" class="navigation navigation-landscape">
             <div class="nav-header">
                 <a class="nav-brand" href="{{route('home')}}">
-                    <img src="{{$data->logo}}" id="logo" class="logo" alt="logo" />
+                    <img src="{{ asset('storage/' . $data->logo) }}" id="logo" class="logo" alt="logo" />
                 </a>
                 <div class="nav-toggle"></div>
                 <div class="mobile_nav">

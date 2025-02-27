@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\pcsRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -21,17 +23,35 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
+    public function create(){
+        $category = Category::all();
+        return view("crud.pcCreate",[
+            "category"=>$category
+        ]);
     }
-
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductRequest $request)
-    {
-        //
+    public function store(pcsRequest $request){
+        $a = Product::create([
+            "name"=>$request->name,
+            "slug"=>$request->slug,
+            "price"=>$request->price,
+            "discount"=>$request->discount,
+            'discount_percent'=>$request->discount_percent,
+            "tutorial_level"=>$request->tutorial_level,
+            "description"=>$request->description,
+            "result"=>$request->result,
+        ]);
+        $b = DB::table('category_product')->insert([
+            "product_id"=>$a->id,
+            "category_id"=>$request->category,
+        ]);
+        if($b && $a){
+            return redirect()->back()->with("success","با موفقیت ذخیره شد");
+        }else{
+            return redirect()->back()->with("error","ذخیره نشد");
+        }
     }
 
     /**

@@ -23,7 +23,10 @@ class CategoryCrudRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "name"=> ["required","string"],
+            'slug'=> ['required','string','unique:categories,slug'],
+            'category'=> ['nullable','exists:categories,id'],
+            'other'=> ['nullable','exists:category_categories,id'],
         ];
     }
 }

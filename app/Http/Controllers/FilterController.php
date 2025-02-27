@@ -34,7 +34,7 @@ class FilterController extends Controller
 
         $category = Category::all();
         $categoryCategory = categoryCategory::all();
-        $product_filter = Product::filter($validatedData);
+        $product_filter = Product::filter($validatedData)->where('status','=','active');
         $count = $product_filter->count();
         $size = 12;
         $products_filter = $product_filter->paginate(9)->appends($validatedData);

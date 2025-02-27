@@ -24,19 +24,19 @@
         
         <div class="d-navigation">
             <ul id="side-menu">
-                <li><a href="{{route('dashboard')}}"><i class="fas fa-th"></i>داشبورد</a></li>
-                <li><a href="{{route('wallet')}}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>کیف پول ({{number_format($user->balance)}}) تومان</a></li>
-                <li>
+                <li @if (Route::is('dashboard')) class="active" @endif><a href="{{route('dashboard')}}"><i class="fas fa-th"></i>داشبورد</a></li>
+                <li @if (Route::is('wallet')) class="active" @endif><a href="{{route('wallet')}}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>کیف پول ({{number_format($user->balance)}}) تومان</a></li>
+                <li @if (Route::is('courses')) class="active" @endif>
                     <a href="{{route('courses')}}"><i class="fas fa-shopping-cart"></i>دوره های خریداری شده</a>
                 
                 </li>
 
-                <li><a href="{{route('ticket')}}"><i class="fas fa-comment"></i>تیکت</a></li>
-                <li>
+                <li @if (Route::is('ticket')) class="active" @endif><a href="{{route('ticket')}}"><i class="fas fa-comment"></i>تیکت</a></li>
+                <li @if (Route::is('Reset-password')) class="active" @endif>
                     <a href="{{route('Reset-password')}}"><i class="fas fa-envelope"></i>تغییر گذرواژه</a>
                     
                 </li>
-                <li>
+                <li @if (Route::is('history')) class="active" @endif>
                     <a href="{{route('history')}}"><i class="fas fa-history"></i>تاریخچه ی خرید و انتقالات</a>
                     
                 </li>

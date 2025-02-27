@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\{CategoryController, HomeController,ProfileController,SearchController,FilterController,CommentController, ProductController,BookController, MovingController, TicketController,EmailController,PurchasesController};
-use App\Http\Controllers\crud\CategoryController as CategoryCrud;
+use App\Http\Controllers\{CategoryController, HomeController,ProfileController,SearchController,FilterController,CommentController, ProductController,BookController, MovingController, TicketController,PurchasesController, RoleController};
 use App\Http\Controllers\Auth\{AuthenticatedSessionController, PasswordResetLinkController, RegisteredUserController};
+use App\Http\Controllers\SiteDataController;
 use App\Http\Middleware\AuthUserMiddleware;
+use App\Http\Middleware\PermissionControlMidlleware;
+use App\Models\SiteData;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware([\App\Http\Middleware\PageViewMiddleware::class])->group(function () {
@@ -33,15 +35,37 @@ Route::prefix('dashboard')->middleware(['auth',AuthUserMiddleware::class])->grou
     Route::get('response/{ticket}', [TicketController::class,'show'])->name('response');
     Route::get('Reset-password', [PasswordResetLinkController::class,'create'])->name('Reset-password');
     Route::get('history', [ProfileController::class,'history'])->name('history');
+    Route::prefix('')->middleware(PermissionControlMidlleware::class.":update-user")->group(function () {
     Route::get('addBalance', [ProfileController::class,"addBalance"])->name("addBalance");
     Route::patch('Add-Balance', [ProfileController::class,'editBalance'])->name('edit-balance');
     Route::get('responseAdmin', [ProfileController::class,'AdminTicket'])->name('AdminTicket');
     Route::get('responseAdmin2/{ticket}', [ProfileController::class,'responseAdmin2'])->name('responseAdmin2');
     Route::patch('StoreResponse', [ProfileController::class,'StoreResponse'])->name('StoreResponse');
+    });
     // crud
-    Route::get('crud/Category', [CategoryCrud::class,'create'])->name('CategoryCrudCreate');
-    Route::post('crud/CategoryStore', [CategoryCrud::class,'store'])->name('CategoryCrudStore');
-    
+    Route::prefix('')->middleware(PermissionControlMidlleware::class .':read-user')->group(function () {
+        Route::get('/user', [ProfileController::class,'estelam'])->name('show-balance');
+    });
+    Route::prefix('')->middleware(PermissionControlMidlleware::class .':create-category')->group(function () {
+    Route::get('crud/Category', [CategoryController::class,'create'])->name('CategoryCrudCreate');
+    Route::post('crud/CategoryStore', [CategoryController::class,'store'])->name('CategoryCrudStore');
+    });
+    Route::prefix('')->middleware(PermissionControlMidlleware::class .':update-category')->group(function () {
+        Route::get('list-category', [CategoryController::class,'show'])->name('list-category');
+    });
+    Route::delete('/delete/category/{category}', [CategoryController::class,'destroy'])->name('destroycategory')->middleware(PermissionControlMidlleware::class.":delete-category");
+    Route::prefix('')->middleware(PermissionControlMidlleware::class .':create-product')->group(function () {
+    Route::get('createProduct', [ProductController::class,'create'])->name('createProduct');
+    Route::post('storeProduct', [ProductController::class,'store'])->name('storeProduct');
+    });
+    Route::prefix('')->middleware(PermissionControlMidlleware::class .':create-siteData')->group(function () {
+    Route::get('createData', [SiteDataController::class,'create'])->name('createData');
+    Route::post('storeData', [SiteDataController::class,'store'])->name('storeData');
+    });
+    Route::prefix('')->middleware(PermissionControlMidlleware::class .':create-role')->group(function () {
+    Route::get('createRole', [RoleController::class,'create'])->name('createRole');
+    Route::post('storeRole', [RoleController::class,'store'])->name('storeRole');
+    });
     // end crud
     Route::patch('Password-Reset', [PasswordResetLinkController::class,'store'])->name('Password-Reset'); // not writed
 

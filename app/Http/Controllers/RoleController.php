@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
+use App\Models\Permission;
 use App\Models\Role;
 
 class RoleController extends Controller
@@ -21,7 +22,10 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+
+        return view("crud.createRole",[
+            "permission"=>Permission::all(),
+        ]);
     }
 
     /**
@@ -29,7 +33,14 @@ class RoleController extends Controller
      */
     public function store(StoreRoleRequest $request)
     {
-        //
+        $role = Role::create(['name'=>$request->get("name")]);
+        if($request->get("Permission") == ["all"]){
+            $role->permissions()->sync(Permission::all());
+        }else{
+        $role->permissions()->sync($request->get("Permission"));
+        }
+        return redirect()->back()->with("success","نقش ساخته شد و دسترسی ها داده شد");
+    
     }
 
     /**

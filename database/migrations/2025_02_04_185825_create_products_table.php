@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('slug');
             $table->string('view')->default(0);
             $table->integer('price')->default(0);
-            $table->integer('discount')->default(0);
-            $table->integer('discount_percent')->default(0);
+            $table->integer('discount')->default(0)->nullable();
+            $table->integer('discount_percent')->default(0)->nullable();
             $table->string('language')->default('fa');
             $table->string('description');
             $table->enum('status', ['active', 'inactive'])->default('inactive');

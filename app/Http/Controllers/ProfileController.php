@@ -29,6 +29,10 @@ class ProfileController extends Controller
 
         return view("profile.addBalance",compact("user"));
     }
+    public function estelam(Request $request){
+        $user = User::where("username",$request->get('username'))->get();
+        dd($user);
+    }
     public function editBalance(Request $request){
         if($request->has("delete")){
             $user = User::where('username', $request->get('username'))->first();

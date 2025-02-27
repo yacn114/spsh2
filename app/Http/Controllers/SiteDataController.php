@@ -21,7 +21,12 @@ class SiteDataController extends Controller
      */
     public function create()
     {
-        //
+
+
+        
+        return view("crud.createData",[
+            
+        ]);
     }
 
     /**
@@ -29,8 +34,28 @@ class SiteDataController extends Controller
      */
     public function store(StoreSiteDataRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        
+        if ($request->hasFile('logo')) {
+            $file = $request->file('logo');
+            $filename = 'logo_' . time() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('public/logos', $filename);
+            $validated['logo'] = 'public/logos/' . $filename;
+        }
+        $validated = array_filter($validated, function ($value) {
+            return !is_null($value) && $value !== '';
+        });
+        $siteData = SiteData::first();
+        if ($siteData) {
+            $siteData->update($validated);
+        } else {
+            SiteData::create($validated);
+        }
+
+        return redirect()->back()->with('success', 'اطلاعات سایت با موفقیت ذخیره شد!');
     }
+    
 
     /**
      * Display the specified resource.

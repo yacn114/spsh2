@@ -12,6 +12,7 @@ class Product extends Model
     /** @use HasFactory<\Database\Factories\ProductFactory> */
     use HasFactory;
     
+    protected $guarded = [];
     public function image(){
         return $this->hasMany(ImageProduct::class);
     }

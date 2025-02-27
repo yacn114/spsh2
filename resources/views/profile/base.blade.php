@@ -1,4 +1,4 @@
-@if ($user->role->name == "superuser")
+@if ($user->role->HasPermission('create-category') || $user->role->HasPermission('create-product') || $user->role->HasPermission('create-role') || $user->role->HasPermission('create-siteData'))
 @include('profile.navigation')
 @else
 @include("main.navigation")
@@ -17,7 +17,7 @@
 										
 					<div class="row">
 
-						@if ($user->role->name == "superuser")
+						@if ($user->role->HasPermission('create-category') || $user->role->HasPermission('create-product') || $user->role->HasPermission('create-role') || $user->role->HasPermission('create-siteData'))
 						@include('profile.right-menu-admin')
 						@else
 						@include('profile.right-menu')
