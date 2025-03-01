@@ -32,6 +32,7 @@ class pcsRequest extends FormRequest
             'description' => ['required', 'string', 'max:1000'],
             'tutorial_level' => ['required', 'string', 'in:level1,level2,level3'],
             'result' => ['required', 'string'],
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 

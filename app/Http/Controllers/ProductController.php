@@ -6,6 +6,7 @@ use App\Http\Requests\pcsRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\ImageProduct;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -58,6 +59,16 @@ class ProductController extends Controller
             "tutorial_level"=>$request->tutorial_level,
             "description"=>$request->description,
             "result"=>$request->result,
+        ]);
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('products', 'public'); // ذخیره در storage/app/public/products
+        } else {
+            $imagePath = null;
+        }
+    
+        ImageProduct::create([
+            "product_id"=> $product->id,
+            "image"=> $request->has,
         ]);
         $product->categories()->attach($request->category);
 

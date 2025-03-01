@@ -65,17 +65,20 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Comment $comment)
+    public function edit()
     {
-        //
+        $comments = Comment::where('status', "closed")->get();
+        return view('crud.comments', compact('comments'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCommentRequest $request, Comment $comment)
+    public function update(Comment $comment)
     {
-        //
+        $comment->status = "open";
+        $comment->save();
+        return redirect()->back()->with("success","آزاد شد");
     }
 
     /**

@@ -75,6 +75,8 @@ Route::prefix('dashboard')->middleware(['auth',AuthUserMiddleware::class])->grou
     });
     
     Route::get('createRole', [RoleController::class,'create'])->name('createRole')->middleware(PermissionControlMidlleware::class.':create-role');
+    Route::get('comments', [CommentController::class,'edit'])->name('comments')->middleware(PermissionControlMidlleware::class.':create-product');
+    Route::get('activecomment/{comment}', [CommentController::class,'update'])->name('activecomment')->middleware(PermissionControlMidlleware::class.':create-product');
     Route::get('listRole', [RoleController::class,'index'])->name('listRole')->middleware(PermissionControlMidlleware::class.':read-role');
     Route::post('storeRole', [RoleController::class,'store'])->name('storeRole')->middleware(PermissionControlMidlleware::class.':create-role');
     Route::get('editrole/{role}', [RoleController::class,'edit'])->name('editrole')->middleware(PermissionControlMidlleware::class.':update-role');
