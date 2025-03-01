@@ -3,7 +3,7 @@
         <nav id="navigation" class="navigation navigation-landscape">
             <div class="nav-header">
                 <a class="nav-brand" href="#">
-                    <img src="{{$data->logo}}" width="70px" height="50px" class="logo" alt="" />
+                    <img src="{{asset('storage/'.$data->logo)}}" width="70px" height="50px" class="logo" alt="" />
                 </a>
                 <div class="nav-toggle"></div>
                 <div class="mobile_nav">

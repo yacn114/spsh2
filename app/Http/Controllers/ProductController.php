@@ -15,9 +15,24 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function statusInactive(Product $product) {
+        $product->status = "inactive";
+        $product->save();
+        return redirect()->back()->with("success","غیرفعال شد");
+
+     }
+     public function statusActive(Product $product) {
+        $product->status = "active";
+        $product->save();
+        return redirect()->back()->with("success","فعال شد");
+     }
     public function index()
     {
-        //
+        return view("crud.list-product",[
+            "products" => Product::paginate(10),
+
+        ]);
     }
 
     /**
@@ -33,7 +48,8 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(pcsRequest $request){
-        $a = Product::create([
+        
+        $product = Product::create([
             "name"=>$request->name,
             "slug"=>$request->slug,
             "price"=>$request->price,
@@ -43,15 +59,11 @@ class ProductController extends Controller
             "description"=>$request->description,
             "result"=>$request->result,
         ]);
-        $b = DB::table('category_product')->insert([
-            "product_id"=>$a->id,
-            "category_id"=>$request->category,
-        ]);
-        if($b && $a){
-            return redirect()->back()->with("success","با موفقیت ذخیره شد");
-        }else{
-            return redirect()->back()->with("error","ذخیره نشد");
-        }
+        $product->categories()->attach($request->category);
+
+        
+        return redirect()->back()->with("success","با موفقیت ذخیره شد");
+        
     }
 
     /**
@@ -73,7 +85,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        
+
+        return view('crud.editProduct',['product'=>$product,"category"=>Category::all(),"cate"=>$product->categories()]);
     }
 
     /**
@@ -81,7 +95,10 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $product->update($request->validated());
+        $product->categories()->sync($request->category);
+
+        return redirect()->back()->with('success', 'محصول با موفقیت به‌روزرسانی شد.');
     }
 
     /**
@@ -89,6 +106,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        
+        if($product->delete()){
+            return redirect()->back()->with("success","پست با موفقیت حذف شد");
+        }else{
+            return redirect()->back()->with("error","پست حذف نشد");
+        }
     }
 }

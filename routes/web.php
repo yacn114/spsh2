@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\{AuthenticatedSessionController, PasswordResetLink
 use App\Http\Controllers\SiteDataController;
 use App\Http\Middleware\AuthUserMiddleware;
 use App\Http\Middleware\PermissionControlMidlleware;
+use App\Models\Product;
 use App\Models\SiteData;
 use Illuminate\Support\Facades\Route;
 
@@ -53,7 +54,13 @@ Route::prefix('dashboard')->middleware(['auth',AuthUserMiddleware::class])->grou
     Route::prefix('')->middleware(PermissionControlMidlleware::class .':update-category')->group(function () {
         Route::get('list-category', [CategoryController::class,'show'])->name('list-category');
     });
+    Route::get('listProduct', [ProductController::class,"index"])->name("listProduct")->middleware(PermissionControlMidlleware::class .':create-product');
+    Route::get('/inactiveProduct/{product}', [ProductController::class,"statusInactive"])->name("inactiveProduct")->middleware(PermissionControlMidlleware::class .':update-product');
+    Route::get('/activeProduct/{product}', [ProductController::class,"statusActive"])->name("activeProduct")->middleware(PermissionControlMidlleware::class .':update-product');
+    Route::get('/editProduct/{product}', [ProductController::class,"edit"])->name("editProduct")->middleware(PermissionControlMidlleware::class .':update-product');
+    Route::delete('delete/Product/{product}', [ProductController::class,"destroy"])->name("deleteProduct")->middleware(PermissionControlMidlleware::class .':delete-product');
     Route::patch('update-category/{category}', [CategoryController::class,'update'])->name('update-category')->middleware(PermissionControlMidlleware::class.":update-category");
+    Route::patch('update-product/{product}', [ProductController::class,'update'])->name('update-Product')->middleware(PermissionControlMidlleware::class.":update-product");
     Route::delete('/delete/category/{category}', [CategoryController::class,'destroy'])->name('destroycategory')->middleware(PermissionControlMidlleware::class.":delete-category");
     Route::get('edit/{category}', [CategoryController::class,'edit'])->name('editCategory')->middleware(PermissionControlMidlleware::class.":update-category");
  
@@ -66,10 +73,14 @@ Route::prefix('dashboard')->middleware(['auth',AuthUserMiddleware::class])->grou
     Route::get('createData', [SiteDataController::class,'create'])->name('createData');
     Route::post('storeData', [SiteDataController::class,'store'])->name('storeData');
     });
-    Route::prefix('')->middleware(PermissionControlMidlleware::class .':create-role')->group(function () {
-    Route::get('createRole', [RoleController::class,'create'])->name('createRole');
-    Route::post('storeRole', [RoleController::class,'store'])->name('storeRole');
-    });
+    
+    Route::get('createRole', [RoleController::class,'create'])->name('createRole')->middleware(PermissionControlMidlleware::class.':create-role');
+    Route::get('listRole', [RoleController::class,'index'])->name('listRole')->middleware(PermissionControlMidlleware::class.':read-role');
+    Route::post('storeRole', [RoleController::class,'store'])->name('storeRole')->middleware(PermissionControlMidlleware::class.':create-role');
+    Route::get('editrole/{role}', [RoleController::class,'edit'])->name('editrole')->middleware(PermissionControlMidlleware::class.':update-role');
+    Route::patch('updaterole/{role}', [RoleController::class,'update'])->name('updaterole')->middleware(PermissionControlMidlleware::class.':update-role');
+    Route::delete('deleterole/{role}', [RoleController::class,'destroy'])->name('deleterole')->middleware(PermissionControlMidlleware::class.':delete-role');
+    
     // end crud
     Route::patch('Password-Reset', [PasswordResetLinkController::class,'store'])->name('Password-Reset'); // not writed
 

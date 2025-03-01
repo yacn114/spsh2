@@ -14,7 +14,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        return view("crud.listRole", ["roles"=> Role::all()]);
     }
 
     /**
@@ -46,17 +46,18 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Role $role)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Role $role)
     {
-        //
+        
+        return view("crud.editRole", [
+        "role"=>$role
+    ,    "permission"=>Permission::all(),
+    ]);
     }
 
     /**
@@ -64,7 +65,13 @@ class RoleController extends Controller
      */
     public function update(UpdateRoleRequest $request, Role $role)
     {
-        //
+        $role->update(['name'=>$request->get("name")]);
+        if($request->get("Permission") == ["all"]){
+            $role->permissions()->sync(Permission::all());
+        }else{
+        $role->permissions()->sync($request->get("Permission"));
+        }
+        return redirect()->back()->with("success","نقش ساخته شد و دسترسی ها داده شد");
     }
 
     /**
@@ -72,6 +79,8 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        $role->permissions()->detach();
+        $role->delete();
+        return redirect()->back()->with("success","deleted !");
     }
 }

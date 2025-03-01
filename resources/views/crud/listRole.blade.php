@@ -13,27 +13,24 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">عنوان</th>
-    
-                            <th scope="col">زیر دسته ی ..</th>
-                             <th scope="col">جزيیات</th>
-                            
+                            <th scope="col">عملیات</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($category as $categories)
+                        @foreach ($roles as $role)
     
     
                         <tr>
     
     
                         <th scope="row">{{$loop->index +1}}</th>
-                        <td><a href="{{route('category',$categories)}}"><h6>{{$categories->name}}</h6></a></td>
-                            <td><span class="trip" style="font-size:15px">{{$categories->parent->name ?? ""}}</span></td>
+                        <td><h6>{{$role->name}}</h6></td>
+                            
     
                             <td>
                                 <div class="row">
-                                <a class="m-2" href="{{route("editCategory",$categories->id)}}"><button class="btn btn-info">ویرایش</button></a>
-                                <form action="{{route('destroycategory',$categories->id)}}" class="m-2" method="post">@csrf @method("DELETE")<button class="btn btn-danger" type="submit">حذف</button></a></form>
+                                <a class="m-2" href="{{route("editrole",$role)}}"><button class="btn btn-info">ویرایش</button></a>
+                                <form action="{{route('deleterole',$role)}}" class="m-2" method="post">@csrf @method("DELETE")<button class="btn btn-danger" type="submit">حذف</button></a></form>
                             </div>
                         
                         </td>
