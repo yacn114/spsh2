@@ -40,6 +40,9 @@ class BookController extends Controller
             "product_id"=> $product->id,
             "user_id"=> Auth::user()->id,
         ]);
+        Product::where("id", $product->id)->increment("student_count");
+
+    // dd($a);
         User::where("id", Auth::user()->id)->update([
             "balance"=> User::find(Auth::user()->id)->balance - $product->discount_action(),
             ]);
