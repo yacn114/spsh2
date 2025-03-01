@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\categoryCategory;
+use App\Models\categoryCategory as cc;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -12,7 +12,7 @@ class FilterController extends Controller
     public function index(){
         $product_filter = null;
         $category = Category::all();
-        $categoryCategory = categoryCategory::all();
+        $categoryCategory = cc::all();
 
         return view("main.filter",[
             "products_filter"=>$product_filter,
@@ -31,9 +31,9 @@ class FilterController extends Controller
             'category'  => 'nullable|string|exists:categories,slug',
             'catcat'  => 'nullable|string|exists:category_categories,name',
         ]);
-
+        
         $category = Category::all();
-        $categoryCategory = categoryCategory::all();
+        $categoryCategory = cc::all();
         $product_filter = Product::filter($validatedData)->where('status','=','active');
         $count = $product_filter->count();
         $size = 12;

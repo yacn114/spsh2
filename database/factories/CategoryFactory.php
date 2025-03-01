@@ -23,7 +23,7 @@ class CategoryFactory extends Factory
             'name' => ucfirst($name),
             'slug' => Str::slug($name),
             'category_id' => $this->faker->randomElement([1,null]),
-            'parentCategory' => 1,
+            'parent_category_id' => 1,
         ];
     }
 }

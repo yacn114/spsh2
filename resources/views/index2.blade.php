@@ -95,12 +95,12 @@
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="edu_cat_2 cat-{{$loop->index}}">
                     <div class="edu_cat_icons">
-                        <a class="pic-main" href="{{route('cat',$cat_cat->name)}}"><img src="{{$cat_cat->image}}" class="img-fluid" alt="{{$cat_cat->name}}" /></a>
+                        <a class="pic-main" href="/filter/filter?name=&catcat={{ urlencode($cat_cat->name) }}&levels=&price=&language=&category=&"><img src="{{$cat_cat->image}}" class="img-fluid" alt="{{$cat_cat->name}}" /></a>
                     </div>
                     <div class="edu_cat_data">
-                        <h4 class="title"><a href="{{route('cat',$cat_cat->name)}}">{{$cat_cat->name}}</a></h4>
+                        <h4 class="title"><a href="/filter/filter?name=&catcat={{ urlencode($cat_cat->name) }}&levels=&price=&language=&category=&">{{$cat_cat->name}}</a></h4>
                         <ul class="meta">
-                            <li class="video"><i class="ti-video-clapper"></i>{{$cat_cat->product_count}} دوره</li>
+                            
                         </ul>
                     </div>
                 </div>

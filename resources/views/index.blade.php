@@ -102,10 +102,10 @@
                 
                 <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
                     <div class="crs_cate_wrap style_2">
-                        <a href="{{route('cat',$cat->name)}}" class="crs_cate_box">
+                        <a href="/filter/filter?name=&catcat={{ urlencode($cat->name) }}&levels=&price=&language=&category=&" class="crs_cate_box">
                             <div class="crs_cate_icon"><img src="{{$cat->image}}" alt="{{$cat->name}}"></div>
                             <div class="crs_cate_caption"><span>{{$cat->name}}</span></div>
-                             <div class="crs_cate_count"><span>{{$cat->product_count}} دوره</span></div> 
+                             
                         </a>
                     </div>
                 </div>

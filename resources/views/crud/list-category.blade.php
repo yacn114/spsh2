@@ -32,8 +32,8 @@
     
                             <td>
                                 <div class="row">
-                                <a class="m-2" href="{{route("editCategory",$categories->id)}}"><button class="btn btn-info">ویرایش</button></a>
-                                <form action="{{route('destroycategory',$categories->id)}}" class="m-2" method="post">@csrf @method("DELETE")<button class="btn btn-danger" type="submit">حذف</button></a></form>
+                                <a class="m-2" href="{{route("editCategory",$categories)}}"><button class="btn btn-info">ویرایش</button></a>
+                                <form action="{{route('destroycategory',$categories)}}" class="m-2" method="post">@csrf @method("DELETE")<button class="btn btn-danger" type="submit">حذف</button></a></form>
                             </div>
                         
                         </td>

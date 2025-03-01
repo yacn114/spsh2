@@ -85,6 +85,4 @@ Route::prefix('dashboard')->middleware(['auth',AuthUserMiddleware::class])->grou
     Route::patch('Password-Reset', [PasswordResetLinkController::class,'store'])->name('Password-Reset'); // not writed
 
 });
-Route::get('cat/{slug}', [])->name('cat'); // not writed
-Route::get('complete/', [])->name('complete'); // not writed
 });

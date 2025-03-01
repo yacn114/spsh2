@@ -68,7 +68,7 @@ class CategoryController extends Controller
         $categories= Category::all();
         $cat =  cc::all();
         
-        $catcat = cc::where("id",'=',$category->parentCategory)->firstOrFail();
+        $catcat = cc::where("id",'=',$category->parent_category_id)->firstOrFail();
         // dd($catcat);
         return view("crud.editCategory",[
             "category"=> $category,
@@ -93,7 +93,7 @@ class CategoryController extends Controller
             "name"=> $request->get("name"),
             "slug"=> $request->get("slug"),
             "category_id"=> $request->get("category"),
-            "parentCategory"=> $request->get("other"),
+            "parent_category_id"=> $request->get("other"),
         ]);
 
         return redirect()->back()->with('success', 'دسته‌بندی با موفقیت به‌روز شد!');

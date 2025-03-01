@@ -229,6 +229,7 @@
 
 									<h3>{{$product->name}}</h3>
 								</div>
+								
                                 <div style="padding: 20px">
                                     <div class="d-flex justify-content-between" >
                                         <span>قیمت بدون تخفیف :</span><span>{{ number_format($product->price) }} تومان</span>
@@ -255,6 +256,7 @@
 										<li><i class="ti-user"></i>{{number_format($product->view)}} بازدید</li>
 										<li><i class="bi bi-translate">lang</i>{{$product->language}}</li>
 										<li><i class="ti-bar-chart-alt"></i>سطح {{$product->tutorial_level}}</li>
+										<li><i class="ti-user"></i>تعداد دانشجو : {{$product->student_count}}</li>
 										
 									</ul>
 								</div>

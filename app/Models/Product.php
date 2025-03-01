@@ -80,10 +80,14 @@ class Product extends Model
             ->when($filters['catcat'] ?? null, function ($query, $catego) {
                 $query->whereHas('categories', function ($q) use ($catego) {
                     $q->whereHas('parentCategoryRelation', function ($qq) use ($catego) {
-                        $qq->where('name', $catego);
+                        $qq->where('name', $catego); // استفاده از slug یا id
                     });
                 });
             });
+            
+            
+            
+            
     }
     
 
