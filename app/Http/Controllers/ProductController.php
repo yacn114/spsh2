@@ -68,7 +68,8 @@ class ProductController extends Controller
     
         ImageProduct::create([
             "product_id"=> $product->id,
-            "image"=> $request->has,
+            "image"=> "/storage/".$imagePath,
+            "alt"=>$product->slug,
         ]);
         $product->categories()->attach($request->category);
 
