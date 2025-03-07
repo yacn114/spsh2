@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\pcsRequest;
-use App\Http\Requests\UpdateProductRequest;
-use App\Models\Category;
-use App\Models\Comment;
-use App\Models\ImageProduct;
-use App\Models\Product;
+use App\Events\ProductStatusChanged;
+use App\Http\Requests\{pcsRequest,UpdateProductRequest};
+use App\Models\{Product,Category,Comment,ImageProduct};
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
@@ -18,20 +15,23 @@ class ProductController extends Controller
      */
 
      public function statusInactive(Product $product) {
+        event(new ProductStatusChanged($product,"inactive"));
         $product->status = "inactive";
         $product->save();
         return redirect()->back()->with("success","غیرفعال شد");
 
      }
      public function statusActive(Product $product) {
+        event(new ProductStatusChanged($product,"active"));
         $product->status = "active";
         $product->save();
         return redirect()->back()->with("success","فعال شد");
      }
     public function index()
     {
+        $products = Product::paginate(10);
         return view("crud.list-product",[
-            "products" => Product::paginate(10),
+            "products" => $products,
 
         ]);
     }
