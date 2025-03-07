@@ -16,20 +16,22 @@ class ProductController extends Controller
 
      public function statusInactive(Product $product) {
         event(new ProductStatusChanged($product,"inactive"));
-        $product->status = "inactive";
-        $product->save();
+        // $product->status = "inactive";
+        // $product->save();
         return redirect()->back()->with("success","غیرفعال شد");
 
      }
      public function statusActive(Product $product) {
         event(new ProductStatusChanged($product,"active"));
-        $product->status = "active";
-        $product->save();
+        // $product->status = "active";
+        // $product->save();
         return redirect()->back()->with("success","فعال شد");
      }
     public function index()
     {
-        $products = Product::paginate(10);
+        $products = Cache::remember("products",60, function () {
+            return Product::paginate(10);
+        });
         return view("crud.list-product",[
             "products" => $products,
 
