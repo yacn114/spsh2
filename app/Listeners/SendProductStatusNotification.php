@@ -9,11 +9,9 @@ class SendProductStatusNotification implements ShouldQueue
 {
     public function handle(ProductStatusChanged $event)
     {
-        $event->product->status = $event->status;
-        $event->product->save();
-        dd($event->product->status);
+  
         Mail::raw("وضعیت محصول {$event->product->name} به {$event->status} تغییر کرد",function ($message){
-            $message->to("admin@gmail.com")->subject("تغییر وضعیت محصول");
+            $message->to("yacn1214@gmail.com")->subject("تغییر وضعیت محصول");
         });
     }
 }
