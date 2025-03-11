@@ -1,12 +1,8 @@
 <?php
 
-use App\Http\Controllers\{CategoryController, HomeController,ProfileController,SearchController,FilterController,CommentController, ProductController,BookController, MovingController, TicketController,PurchasesController, RoleController};
+use App\Http\Controllers\{CategoryController, HomeController,ProfileController,SearchController,FilterController,CommentController, ProductController,BookController, MovingController, TicketController,PurchasesController, RoleController,SiteDataController};
 use App\Http\Controllers\Auth\{AuthenticatedSessionController, PasswordResetLinkController, RegisteredUserController};
-use App\Http\Controllers\SiteDataController;
-use App\Http\Middleware\AuthUserMiddleware;
-use App\Http\Middleware\PermissionControlMidlleware;
-use App\Models\Product;
-use App\Models\SiteData;
+use App\Http\Middleware\{AuthUserMiddleware,PermissionControlMidlleware};
 use Illuminate\Support\Facades\Route;
 
 Route::middleware([\App\Http\Middleware\PageViewMiddleware::class])->group(function () {

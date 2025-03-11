@@ -43,20 +43,7 @@
 	font-weight: 400;
 	font-style: normal
 }
-@font-face {
-	font-family: vazir;
-	src: url('fonts/vazir/Vazir.eot');
-	src: url('fonts/vazir/Vazir.eot') format('embedded-opentype'), url('fonts/vazir/Vazir-Meduim-FD.woff') format('woff'), url('fonts/vazir/Vazir.ttf') format('truetype');
-	font-weight: 400;
-	font-style: normal
-}
-@font-face {
-	font-family: vazir-bold;
-	src: url('fonts/vazir/Vazir-Bold.eot');
-	src: url('fonts/vazir/Vazir-Blod.eot') format('embedded-opentype'), url('fonts/vazir/Vazir-Bold-FD.woff') format('woff'), url('fonts/vazir/Vazir-Bold.ttf') format('truetype');
-	font-weight: 400;
-	font-style: normal
-}
+
 
 /*------------------------------------------------------------
 	Global Settings
