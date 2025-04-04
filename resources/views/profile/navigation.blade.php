@@ -32,9 +32,6 @@
                 <ul class="nav-menu">
                     <li @if (Route::is('createRole')) class="active" @endif><a href="createRole">نقش و دسترسی</a></li>
                 </ul>
-                <ul class="nav-menu">
-                    <li @if (Route::is('addBalance')) class="active" @endif><a href="addBalance">احتمالا عکس</a></li>
-                </ul>
 
             </div>
         </nav>
